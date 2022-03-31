@@ -7,8 +7,10 @@ export default function Register() {
       name="exemplo"
       placeholder="teste"
       title="Titulo"
+      // type="password"
       leftIcon={<AiFillAlert />}
-      w="30%"
+      // disabled={true}
+      w="100%"
     />
   );
 }

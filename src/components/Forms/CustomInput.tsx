@@ -45,6 +45,7 @@ export default function CustomInput({
         fontSize="18px"
         fontFamily="vietnam"
         fontWeight="semibold"
+        mb={{base: '6px', md: '10px'}}
       >
         {title}
       </Heading>
@@ -62,32 +63,33 @@ export default function CustomInput({
           }
           readOnly={disabled}
           px="16px"
+          fontSize={{base: '14px', md: '16px'}}
           pr={props.type === 'password' ? '15%' : '16px'}
-          variant={variant ?? 'outlineInput'}
+          border="none"
+          _focus={{boxShadow: 'none', border: 'none'}}
           bg={disabled ? 'disabled' : 'input'}
           borderRadius="20px"
           //   {...register(name)}
         />
+
+        {props.type === 'password' && (
+          <InputRightElement>
+            <Button
+              h="30px"
+              w="100%"
+              size="lg"
+              bg="none"
+              p="0"
+              _focus={{boxShadow: 'none', bg: 'none'}}
+              _hover={{bg: 'none'}}
+              _active={{bg: 'none'}}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+            </Button>
+          </InputRightElement>
+        )}
       </InputGroup>
-      {props.type === 'password' && (
-        <InputRightElement>
-          <Button
-            h="30px"
-            w="100%"
-            mt="25px"
-            size="lg"
-            bg="none"
-            p="0"
-            _focus={{boxShadow: 'none', bg: 'none'}}
-            _hover={{bg: 'none'}}
-            _active={{bg: 'none'}}
-            onMouseDown={() => setShowPassword(!showPassword)}
-            onMouseUp={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
-          </Button>
-        </InputRightElement>
-      )}
       <FormErrorMessage
         fontSize={{base: 'xs', lg: 'sm'}}
         mt="4px"
