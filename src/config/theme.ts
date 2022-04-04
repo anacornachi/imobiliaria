@@ -10,6 +10,8 @@ const theme = extendTheme({
     secondary: '#8F90A6',
     primaryBlue: '#1DAEFF',
     delete: '#DB0000',
+    input: '#fbfcfe',
+    disabled: '#ccccce',
   },
   fonts: {
     vietnam: "'Be Vietnam Pro', sans-serif;",
