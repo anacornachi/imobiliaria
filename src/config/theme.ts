@@ -9,6 +9,7 @@ const theme = extendTheme({
     share: '#FD9638',
     secondary: '#8F90A6',
     primaryBlue: '#1DAEFF',
+    delete: '#DB0000',
   },
   fonts: {
     vietnam: "'Be Vietnam Pro', sans-serif;",
