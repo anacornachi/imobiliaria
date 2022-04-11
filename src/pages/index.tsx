@@ -1,11 +1,5 @@
-import CustomButton from '../components/Buttons/CustomButton';
-
 function HomePage() {
-  return (
-    <div>
-      <CustomButton />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default HomePage;
