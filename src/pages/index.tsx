@@ -1,10 +1,10 @@
-import Header from '@components/Header';
+import CustomCityHighlight from '../components/CityHighlight/CustomCityHighlight';
 
 function HomePage() {
   return (
-    <>
-      <Header />
-    </>
+    <div>
+      <CustomCityHighlight />
+    </div>
   );
 }
 
