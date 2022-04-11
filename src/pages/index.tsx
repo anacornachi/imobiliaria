@@ -1,9 +1,10 @@
-import CustomButton from '../components/Buttons/CustomButton';
+import CustomCityHighlight from '../components/CityHighlight/CustomCityHighlight';
+
 
 function HomePage() {
   return (
     <div>
-      <CustomButton />
+      <CustomCityHighlight />
     </div>
   );
 }
