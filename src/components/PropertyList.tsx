@@ -1,5 +1,4 @@
 import {Flex, Box, Image, Badge, Heading, BoxProps} from '@chakra-ui/react'
-import { string } from 'yup';
 
 type Props = {
    propertyName: string,
