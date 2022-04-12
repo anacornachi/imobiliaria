@@ -16,7 +16,6 @@ export default function Heading({title, description, button}: Props) {
   return (
     <Flex
       h="150px"
-      fontFamily="vietnam"
       py="20px"
       justify="space-between"
       align={{base: 'none', md: 'center'}}

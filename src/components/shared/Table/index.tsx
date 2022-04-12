@@ -64,7 +64,6 @@ export default function Table({label, dataRow}: Props) {
                   <Th
                     key={key}
                     color="black"
-                    fontFamily="50px"
                     borderBottom="1px"
                     borderColor="description"
                   >

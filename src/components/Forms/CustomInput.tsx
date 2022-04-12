@@ -43,7 +43,6 @@ export default function CustomInput({
       <Heading
         as="h3"
         fontSize="18px"
-        fontFamily="vietnam"
         fontWeight="semibold"
         mb={{base: '6px', md: '10px'}}
       >
