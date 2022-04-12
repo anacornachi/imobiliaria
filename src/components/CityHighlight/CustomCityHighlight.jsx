@@ -1,6 +1,12 @@
-import {Box, Image, Heading} from '@chakra-ui/react';
+import {Box, Heading} from '@chakra-ui/react';
+import Image, {StaticImageData} from 'next/image';
 
-export default function CustomCityHighlight() {
+type Props = {
+  title: string;
+  image: StaticImageData;
+};
+
+export default function CustomCityHighlight({title, image}: Props) {
   return (
     <Box
       w={{base: '178px', md: '278px'}}
@@ -10,23 +16,17 @@ export default function CustomCityHighlight() {
       <Heading
         textAlign="center"
         position="absolute"
-        as="h2"
-        fontFamily="vietnam"
+        as="h4"
         fontSize={{base: '15px', md: '25px'}}
-        top={{base: '5', md: '10'}}
-        w="100%"
+        top={{base: 5, md: 10}}
+        w="100%" 
+        zIndex={1}
       >
-        SÃO PAULO
+          {title}
       </Heading>
-
-      <Image
-        src="https://gife.org.br/wp/media/2019/12/saopaulo570.jpg"
-        borderRadius="30px"
-        w="100%"
-        h="100%"
-        objectFit="cover"
-        alt="rio"
-      />
+      <Box borderRadius="30px" w="100%" h="100%" objectFit="cover" position="relative">
+        <Image src={image} alt={title} />
+      </Box>
     </Box>
   );
 }
