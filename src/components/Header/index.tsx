@@ -35,7 +35,13 @@ export default function Header() {
                 </ChakraLink>
               </Link>
             ))}
-            <Button variant="outline" fontWeight="normal">
+            <Button
+              variant="secondary"
+              fontWeight="normal"
+              w="130px"
+              fontSize="16px"
+              h="50px"
+            >
               <Link href="/" passHref>
                 <ChakraLink _hover={{border: 'none'}} fontWeight="medium">
                   LOG IN
@@ -73,7 +79,7 @@ export default function Header() {
                 </MenuItem>
               ))}
               <MenuItem h="70px" justifyContent="center">
-                <Button variant="outline" fontWeight="normal">
+                <Button variant="secondary" fontWeight="normal">
                   <Link href="/" passHref>
                     <ChakraLink fontWeight="medium">LOG IN</ChakraLink>
                   </Link>
