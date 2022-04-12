@@ -6,7 +6,7 @@ type Props = {
   image: StaticImageData;
 };
 
-export default function CustomCityHighlight({title, image}: Props) {
+export default function CityHighlight({title, image}: Props) {
   return (
     <Box
       w={{base: '178px', md: '278px'}}
@@ -19,12 +19,18 @@ export default function CustomCityHighlight({title, image}: Props) {
         as="h4"
         fontSize={{base: '15px', md: '25px'}}
         top={{base: 5, md: 10}}
-        w="100%" 
+        w="100%"
         zIndex={1}
       >
-          {title}
+        {title}
       </Heading>
-      <Box borderRadius="30px" w="100%" h="100%" objectFit="cover" position="relative">
+      <Box
+        borderRadius="30px"
+        w="100%"
+        h="100%"
+        objectFit="cover"
+        position="relative"
+      >
         <Image src={image} alt={title} />
       </Box>
     </Box>
