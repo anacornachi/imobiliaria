@@ -2,9 +2,7 @@ import Header from '../components/layout/Header/index';
 
 function HomePage() {
   return (
-    <>
       <Header />
-    </>
   );
 }
 
