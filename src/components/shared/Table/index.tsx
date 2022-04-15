@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Input,
+  Spinner,
   Table as ChakraTable,
   TableContainer,
   Tbody,
@@ -11,24 +12,19 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import Container from '@components/layout/Container';
-import BrokerRow from './rows/BrokerRow';
-import Heading from './Heading';
-import {tableColumns} from 'src/constants/tableColumns';
 import {usePagination} from 'react-use-pagination';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
-import RealEstateRow from './rows/RealEstateRow';
 import debounce from 'lodash.debounce';
-import {useEffect, useMemo, useState} from 'react';
+import React, {ReactNode, useEffect, useMemo, useState} from 'react';
+import filterData from '@utils/filterData';
 
 type Props = {
-  label: string;
-  dataRow: TBroker[] | TRealEstate[];
+  columns: any[];
+  rows: ReactNode[];
+  isLoading: boolean;
 };
 
-export default function Table({label, dataRow}: Props) {
-  const actualColumns = tableColumns.filter((item) => item.label == label);
-  const [{title, description, columns}] = actualColumns;
-
+export default function Table({columns, rows, isLoading}: Props) {
   const {
     currentPage,
     totalPages,
@@ -38,43 +34,31 @@ export default function Table({label, dataRow}: Props) {
     previousEnabled,
     startIndex,
     endIndex,
-  } = usePagination({totalItems: dataRow.length, initialPageSize: 5});
+  } = usePagination({totalItems: rows.length, initialPageSize: 5});
 
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [searchTerm, setSearchTerm] = useState('');
 
-  // const [data, setData] = useState<any[]>(dataRow);
-  // console.log({dataRow});
-  // console.log({data});
+  // if (searchTerm !== '') {
+  //   filterData(dataRow, searchTerm);
+  // }
 
-  if (searchTerm !== '') {
-    // console.log(dataRow);
-    const names = dataRow
-      .map((element) => element.name?.toLowerCase())
-      .filter((name) => name?.includes(searchTerm.toLowerCase()));
-    // console.log(names);
-  }
-  const handleChange = (e: any) => {
-    setSearchTerm(e.target.value);
-  };
+  // const handleChange = (e: any) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
-  const debouncedResults = useMemo(() => {
-    return debounce(handleChange, 300);
-  }, []);
+  // const debouncedResults = useMemo(() => {
+  //   return debounce(handleChange, 300);
+  // }, []);
 
-  useEffect(() => {
-    return () => {
-      debouncedResults.cancel();
-    };
-  });
+  // useEffect(() => {
+  //   return () => {
+  //     debouncedResults.cancel();
+  //   };
+  // });
 
   return (
     <>
       <Container>
-        <Heading
-          title={title}
-          description={description}
-          button={label == 'brokers'}
-        />
         <TableContainer
           bg="#ECF1F8"
           borderRadius="40px"
@@ -91,7 +75,7 @@ export default function Table({label, dataRow}: Props) {
               borderRadius="20px"
               border="none"
               _focus={{boxShadow: 'none', border: 'none'}}
-              onChange={debouncedResults}
+              // onChange={debouncedResults}
             />
           </Flex>
           <ChakraTable variant="simple" mt="5px">
@@ -110,17 +94,12 @@ export default function Table({label, dataRow}: Props) {
               </Tr>
             </Thead>
             <Tbody>
-              {label == 'brokers' ? (
-                <BrokerRow
-                  data={dataRow.slice(startIndex, endIndex + 1) as TBroker[]}
-                />
+              {isLoading ? (
+                <>
+                  <Spinner />
+                </>
               ) : (
-                <RealEstateRow
-                  data={
-                    dataRow.slice(startIndex, endIndex + 1) as TRealEstate[]
-                  }
-                  label={label}
-                />
+                rows.slice(startIndex, endIndex + 1)
               )}
             </Tbody>
           </ChakraTable>
