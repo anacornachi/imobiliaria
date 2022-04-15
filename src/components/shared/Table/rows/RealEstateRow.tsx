@@ -15,10 +15,10 @@ export default function RealEstateRow({data, label}: Props) {
           key,
         ) => (
           <Tr key={key}>
-            <Td borderBottom="1px" borderColor="#C0C0C0">
+            <Td borderBottom="1px" borderColor="#C0C0C0" w="20%">
               {name}
             </Td>
-            <Td borderBottom="1px" borderColor="#C0C0C0">
+            <Td borderBottom="1px" borderColor="#C0C0C0" w="20%">
               {cnpj}
             </Td>
             {label == 'toApprove' ? (
@@ -50,11 +50,11 @@ export default function RealEstateRow({data, label}: Props) {
               </>
             ) : (
               <>
-                <Td borderBottom="1px" borderColor="#C0C0C0">
+                <Td borderBottom="1px" borderColor="#C0C0C0" w="20%">
                   {properties}
                 </Td>
-                <Td borderBottom="1px" borderColor="#C0C0C0">
-                  {status ? 'Ativo' : 'Inativo'}
+                <Td borderBottom="1px" borderColor="#C0C0C0" w="20%">
+                  {status == 'active' ? 'Ativo' : 'Inativo'}
                 </Td>
               </>
             )}

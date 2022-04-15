@@ -3,7 +3,7 @@ import CustomInput from '@components/Forms/CustomInput';
 import Container from '@components/layout/Container';
 import {AiFillAlert} from 'react-icons/ai';
 
-export default function Register() {
+export default function Cadastro() {
   return (
     <Container>
       <CustomInput
