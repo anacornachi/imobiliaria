@@ -17,10 +17,12 @@ import {HiMenu} from 'react-icons/hi';
 import {useState} from 'react';
 import {IoCloseSharp} from 'react-icons/io5';
 import {navigationHeader} from './navigationHeader';
+import {signOut, useSession} from 'next-auth/react';
 
 export default function Header() {
   const [isLargerThan760px] = useMediaQuery('(min-width: 760px)');
   const [isOpen, setIsOpen] = useState(false);
+  const {data, status} = useSession();
 
   return (
     <Container maxH="134px" py="30px">
@@ -28,26 +30,32 @@ export default function Header() {
         <Image src={logo} alt="logo" />
         {isLargerThan760px ? (
           <Flex as="nav" gap="50px" align="center">
-            {navigationHeader.map((navigation) => (
-              <Link href={navigation.link} passHref>
+            {navigationHeader.map((navigation, key) => (
+              <Link href={navigation.link} passHref key={key}>
                 <ChakraLink _hover={{border: 'none'}} fontWeight="medium">
                   {navigation.label}
                 </ChakraLink>
               </Link>
             ))}
-            <Button
-              variant="secondary"
-              fontWeight="normal"
-              w="130px"
-              fontSize="16px"
-              h="50px"
-            >
-              <Link href="/" passHref>
-                <ChakraLink _hover={{border: 'none'}} fontWeight="medium">
-                  LOG IN
-                </ChakraLink>
-              </Link>
-            </Button>
+            {status === 'authenticated' ? (
+              <Button
+                variant="secondary"
+                fontWeight="medium"
+                w="130px"
+                onClick={async () => await signOut()}
+              >
+                LOG OUT
+              </Button>
+            ) : (
+              <Button
+                isLoading={status === 'loading'}
+                variant="secondary"
+                fontWeight="medium"
+                w="130px"
+              >
+                <Link href="/account/login">LOG IN</Link>
+              </Button>
+            )}
           </Flex>
         ) : (
           <Menu autoSelect={false}>
@@ -69,8 +77,8 @@ export default function Header() {
               boxShadow="xl"
               alignItems="center"
             >
-              {navigationHeader.map((navigation) => (
-                <MenuItem h="70px" justifyContent="center">
+              {navigationHeader.map((navigation, key) => (
+                <MenuItem h="70px" justifyContent="center" key={key}>
                   <Link href={navigation.link} passHref>
                     <ChakraLink fontWeight="medium">
                       {navigation.label}
@@ -79,11 +87,17 @@ export default function Header() {
                 </MenuItem>
               ))}
               <MenuItem h="70px" justifyContent="center">
-                <Button variant="secondary" fontWeight="normal">
-                  <Link href="/" passHref>
-                    <ChakraLink fontWeight="medium">LOG IN</ChakraLink>
-                  </Link>
-                </Button>
+                {status === 'authenticated' ? (
+                  <Button>LOG OUT</Button>
+                ) : (
+                  <Button
+                    isLoading={status === 'loading'}
+                    variant="secondary"
+                    fontWeight="medium"
+                  >
+                    <Link href="/account/login">LOG IN</Link>
+                  </Button>
+                )}
               </MenuItem>
             </MenuList>
           </Menu>
