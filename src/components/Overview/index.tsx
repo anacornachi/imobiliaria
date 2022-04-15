@@ -1,6 +1,11 @@
 import {Flex, Heading} from '@chakra-ui/react';
 
-export default function Overview() {
+type Props = {
+  title: string;
+  data: string;
+};
+
+export default function Overview({title, data}: Props) {
   return (
     <Flex
       w={{base: '100%', sm: '357px'}}
@@ -21,7 +26,7 @@ export default function Overview() {
         color="title"
         mb="38px"
       >
-        Imobiliárias Cadastradas
+        {title}
       </Heading>
       <Heading
         as="h4"
@@ -30,7 +35,7 @@ export default function Overview() {
         w="100%"
         color="description"
       >
-        250
+        {data}
       </Heading>
     </Flex>
   );
