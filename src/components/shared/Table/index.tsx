@@ -1,6 +1,7 @@
 import {
   Button,
   Flex,
+  Input,
   Table as ChakraTable,
   TableContainer,
   Tbody,
@@ -9,15 +10,15 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import CustomInput from '@components/Forms/CustomInput';
 import Container from '@components/layout/Container';
 import BrokerRow from './rows/BrokerRow';
 import Heading from './Heading';
 import {tableColumns} from 'src/constants/tableColumns';
 import {usePagination} from 'react-use-pagination';
-import {useState} from 'react';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import RealEstateRow from './rows/RealEstateRow';
+import debounce from 'lodash.debounce';
+import {useEffect, useMemo, useState} from 'react';
 
 type Props = {
   label: string;
@@ -25,10 +26,8 @@ type Props = {
 };
 
 export default function Table({label, dataRow}: Props) {
-  const actualLabel = tableColumns.filter((item) => item.label == label);
-  const [{title, description, columns}] = actualLabel;
-
-  const [data] = useState(dataRow);
+  const actualColumns = tableColumns.filter((item) => item.label == label);
+  const [{title, description, columns}] = actualColumns;
 
   const {
     currentPage,
@@ -39,7 +38,34 @@ export default function Table({label, dataRow}: Props) {
     previousEnabled,
     startIndex,
     endIndex,
-  } = usePagination({totalItems: data.length, initialPageSize: 5});
+  } = usePagination({totalItems: dataRow.length, initialPageSize: 5});
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // const [data, setData] = useState<any[]>(dataRow);
+  // console.log({dataRow});
+  // console.log({data});
+
+  if (searchTerm !== '') {
+    // console.log(dataRow);
+    const names = dataRow
+      .map((element) => element.name?.toLowerCase())
+      .filter((name) => name?.includes(searchTerm.toLowerCase()));
+    // console.log(names);
+  }
+  const handleChange = (e: any) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const debouncedResults = useMemo(() => {
+    return debounce(handleChange, 300);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      debouncedResults.cancel();
+    };
+  });
 
   return (
     <>
@@ -49,15 +75,26 @@ export default function Table({label, dataRow}: Props) {
           description={description}
           button={label == 'brokers'}
         />
-        <TableContainer bg="#ECF1F8" borderRadius="40px">
+        <TableContainer
+          bg="#ECF1F8"
+          borderRadius="40px"
+          h="440px"
+          position="relative"
+        >
           <Flex py="10px" justify="flex-end" px="20px">
-            <CustomInput
+            <Input
+              mt="10px"
               w={{base: '100%', md: '40%'}}
               name="search"
               placeholder="Busque aqui..."
+              bg="input"
+              borderRadius="20px"
+              border="none"
+              _focus={{boxShadow: 'none', border: 'none'}}
+              onChange={debouncedResults}
             />
           </Flex>
-          <ChakraTable variant="simple">
+          <ChakraTable variant="simple" mt="5px">
             <Thead>
               <Tr>
                 {columns.map((column, key) => (
@@ -75,17 +112,27 @@ export default function Table({label, dataRow}: Props) {
             <Tbody>
               {label == 'brokers' ? (
                 <BrokerRow
-                  data={data.slice(startIndex, endIndex + 1) as TBroker[]}
+                  data={dataRow.slice(startIndex, endIndex + 1) as TBroker[]}
                 />
               ) : (
                 <RealEstateRow
-                  data={data.slice(startIndex, endIndex + 1) as TRealEstate[]}
+                  data={
+                    dataRow.slice(startIndex, endIndex + 1) as TRealEstate[]
+                  }
                   label={label}
                 />
               )}
             </Tbody>
           </ChakraTable>
-          <Flex py="10px" justify="flex-end" px="20px" align="center">
+          <Flex
+            py="10px"
+            justify="flex-end"
+            px="20px"
+            align="center"
+            position="absolute"
+            bottom={0}
+            right={0}
+          >
             {currentPage > 0 && (
               <Button
                 onClick={setPreviousPage}

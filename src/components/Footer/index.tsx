@@ -95,8 +95,9 @@ export default function Footer() {
             gap={{base: '30px', md: '0'}}
           >
             {navigation &&
-              navigation.map((page) => (
+              navigation.map((page, key) => (
                 <Flex
+                  key={key}
                   direction="column"
                   align={{base: 'center', md: 'flex-start'}}
                   gap="20px"
@@ -105,8 +106,8 @@ export default function Footer() {
                     {page.title}
                   </Heading>
 
-                  {page.navigation.map((item) => (
-                    <Link href={item.link}>
+                  {page.navigation.map((item, key) => (
+                    <Link href={item.link} key={key}>
                       <ChakraLink
                         color="title"
                         fontSize="md"
