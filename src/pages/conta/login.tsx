@@ -93,12 +93,14 @@ export default function Login() {
                 type="email"
                 placeholder="E-mail"
                 id="email"
+                bgColor="input"
               />
               <CustomInput
                 name="password"
                 type="password"
                 placeholder="Senha"
                 id="password"
+                bgColor="input"
               />
             </Flex>
             <Link href="/account/recover" passHref>
