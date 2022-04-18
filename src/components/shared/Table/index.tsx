@@ -1,6 +1,8 @@
 import {
   Button,
   Flex,
+  Input,
+  Spinner,
   Table as ChakraTable,
   TableContainer,
   Tbody,
@@ -9,27 +11,19 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import CustomInput from '@components/Forms/CustomInput';
 import Container from '@components/layout/Container';
-import BrokerRow from './rows/BrokerRow';
-import Heading from './Heading';
-import {tableColumns} from 'src/constants/tableColumns';
 import {usePagination} from 'react-use-pagination';
-import {useState} from 'react';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
-import RealEstateRow from './rows/RealEstateRow';
+import debounce from 'lodash.debounce';
+import React, {ReactNode, useEffect, useMemo, useState} from 'react';
 
 type Props = {
-  label: string;
-  dataRow: TBroker[] | TRealEstate[];
+  columns: any[];
+  rows: ReactNode[];
+  isLoading: boolean;
 };
 
-export default function Table({label, dataRow}: Props) {
-  const actualLabel = tableColumns.filter((item) => item.label == label);
-  const [{title, description, columns}] = actualLabel;
-
-  const [data] = useState(dataRow);
-
+export default function Table({columns, rows, isLoading}: Props) {
   const {
     currentPage,
     totalPages,
@@ -39,79 +33,75 @@ export default function Table({label, dataRow}: Props) {
     previousEnabled,
     startIndex,
     endIndex,
-  } = usePagination({totalItems: data.length, initialPageSize: 5});
+  } = usePagination({totalItems: rows.length, initialPageSize: 5});
 
   return (
     <>
-      <Container>
-        <Heading
-          title={title}
-          description={description}
-          button={label == 'brokers'}
-        />
-        <TableContainer bg="#ECF1F8" borderRadius="40px">
-          <Flex py="10px" justify="flex-end" px="20px">
-            <CustomInput
-              w={{base: '100%', md: '40%'}}
-              name="search"
-              placeholder="Busque aqui..."
-            />
-          </Flex>
-          <ChakraTable variant="simple">
-            <Thead>
-              <Tr>
-                {columns.map((column, key) => (
-                  <Th
-                    key={key}
-                    color="black"
-                    borderBottom="1px"
-                    borderColor="description"
-                  >
-                    {column}
-                  </Th>
-                ))}
-              </Tr>
-            </Thead>
-            <Tbody>
-              {label == 'brokers' ? (
-                <BrokerRow
-                  data={data.slice(startIndex, endIndex + 1) as TBroker[]}
-                />
-              ) : (
-                <RealEstateRow
-                  data={data.slice(startIndex, endIndex + 1) as TRealEstate[]}
-                  label={label}
-                />
-              )}
-            </Tbody>
-          </ChakraTable>
-          <Flex py="10px" justify="flex-end" px="20px" align="center">
-            {currentPage > 0 && (
-              <Button
-                onClick={setPreviousPage}
-                disabled={!previousEnabled}
-                _focus={{boxShadow: 'none'}}
-                _hover={{bg: 'none'}}
-                _active={{bg: 'none'}}
-              >
-                <IoIosArrowBack />
-              </Button>
+      <TableContainer
+        bg="#ECF1F8"
+        borderBottomRadius="40px"
+        h="380px"
+        position="relative"
+      >
+        <ChakraTable variant="simple" mt="5px">
+          <Thead>
+            <Tr>
+              {columns.map((column, key) => (
+                <Th
+                  key={key}
+                  color="black"
+                  borderBottom="1px"
+                  borderColor="description"
+                >
+                  {column}
+                </Th>
+              ))}
+            </Tr>
+          </Thead>
+          <Tbody>
+            {isLoading ? (
+              <Flex position="absolute" top="50%" right="50%">
+                <Spinner size="lg" />
+              </Flex>
+            ) : (
+              rows.slice(startIndex, endIndex + 1)
             )}
-            <Text>
-              {currentPage + 1} de {totalPages}
-            </Text>
+          </Tbody>
+        </ChakraTable>
+        <Flex
+          py="10px"
+          justify="flex-end"
+          px="20px"
+          align="center"
+          position="absolute"
+          bottom={0}
+          right={0}
+        >
+          {currentPage > 0 && (
             <Button
-              onClick={setNextPage}
-              disabled={!nextEnabled}
-              _hover={{bg: 'none'}}
+              onClick={setPreviousPage}
+              disabled={!previousEnabled}
               _focus={{boxShadow: 'none'}}
+              _hover={{bg: 'none'}}
               _active={{bg: 'none'}}
             >
-              <IoIosArrowForward />
+              <IoIosArrowBack />
             </Button>
-          </Flex>
-        </TableContainer>
-      </Container>
+          )}
+          <Text>
+            {currentPage + 1} de {totalPages}
+          </Text>
+          <Button
+            onClick={setNextPage}
+            disabled={!nextEnabled}
+            _hover={{bg: 'none'}}
+            _focus={{boxShadow: 'none'}}
+            _active={{bg: 'none'}}
+          >
+            <IoIosArrowForward />
+          </Button>
+        </Flex>
+      </TableContainer>
     </>
   );
 }
