@@ -51,6 +51,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsFacebook />
                   </ChakraLink>
@@ -60,6 +61,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsTwitter />
                   </ChakraLink>
@@ -69,6 +71,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsInstagram />
                   </ChakraLink>
@@ -78,6 +81,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsLinkedin />
                   </ChakraLink>
@@ -107,12 +111,13 @@ export default function Footer() {
                   </Heading>
 
                   {page.navigation.map((item, key) => (
-                    <Link href={item.link} key={key}>
+                    <Link href={item.link} key={key} passHref>
                       <ChakraLink
                         color="title"
                         fontSize="md"
-                        _hover={{color: 'secondary'}}
+                        _hover={{color: 'primaryBlue'}}
                         _focus={{boxShadow: 'none'}}
+                        target="_blank"
                       >
                         {item.label}
                       </ChakraLink>
