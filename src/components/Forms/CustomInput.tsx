@@ -17,14 +17,14 @@ import {IoEyeOffOutline, IoEyeOutline} from 'react-icons/io5';
 type Props = {
   name: string;
   title?: string;
-  variant?: string;
+  bgColor?: string;
   leftIcon?: ReactNode;
   disabled?: boolean;
 } & InputProps;
 
 export default function CustomInput({
   name,
-  variant,
+  bgColor,
   title,
   leftIcon,
   disabled,
@@ -66,7 +66,7 @@ export default function CustomInput({
           pr={props.type === 'password' ? '15%' : '16px'}
           border="none"
           _focus={{boxShadow: 'none', border: 'none'}}
-          bg={disabled ? 'disabled' : 'input'}
+          bg={disabled ? 'disabled' : bgColor}
           borderRadius="20px"
           {...register(name)}
         />
