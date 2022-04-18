@@ -29,7 +29,7 @@ export default function Header() {
       <Flex justify="space-between" align="center">
         <Image src={logo} alt="logo" />
         {isLargerThan760px ? (
-          <Flex as="nav" gap="50px" align="center">
+          <Flex gap="50px" as="nav" align="center">
             {navigationHeader.map((navigation, key) => (
               <Link href={navigation.link} passHref key={key}>
                 <ChakraLink _hover={{border: 'none'}} fontWeight="medium">
@@ -53,7 +53,7 @@ export default function Header() {
                 fontWeight="medium"
                 w="130px"
               >
-                <Link href="/account/login">LOG IN</Link>
+                <Link href="/conta/login">LOG IN</Link>
               </Button>
             )}
           </Flex>
@@ -95,7 +95,7 @@ export default function Header() {
                     variant="secondary"
                     fontWeight="medium"
                   >
-                    <Link href="/account/login">LOG IN</Link>
+                    <Link href="/conta/login">LOG IN</Link>
                   </Button>
                 )}
               </MenuItem>
