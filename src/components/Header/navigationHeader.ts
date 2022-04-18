@@ -4,11 +4,11 @@ export const navigationHeader = [
     label: 'HOME',
   },
   {
-    link: '/',
-    label: 'IMOBILIÁRIAS',
+    link: '/imoveis',
+    label: 'IMÓVEIS',
   },
   {
-    link: '/',
+    link: '/sobre-nos',
     label: 'SOBRE NÓS',
   },
 ];

@@ -27,12 +27,18 @@ export default function Header() {
   return (
     <Container maxH="134px" py="30px">
       <Flex justify="space-between" align="center">
-        <Image src={logo} alt="logo" />
+        <ChakraLink href="/" _focus={{boxShadow: 'none'}}>
+          <Image src={logo} alt="logo" />
+        </ChakraLink>
         {isLargerThan760px ? (
           <Flex gap="50px" as="nav" align="center">
             {navigationHeader.map((navigation, key) => (
               <Link href={navigation.link} passHref key={key}>
-                <ChakraLink _hover={{border: 'none'}} fontWeight="medium">
+                <ChakraLink
+                  _hover={{border: 'none'}}
+                  fontWeight="medium"
+                  _focus={{boxShadow: 'none'}}
+                >
                   {navigation.label}
                 </ChakraLink>
               </Link>
