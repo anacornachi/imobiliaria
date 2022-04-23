@@ -5,10 +5,9 @@ import Heading from '@components/shared/Table/Heading';
 import RealEstateRow from '@components/shared/Table/rows/RealEstateRow';
 import {getAllActive} from '@services/realEstate';
 import filterData from '@utils/filterData';
-import debounce from 'lodash.debounce';
 import {useSession} from 'next-auth/react';
 import {useRouter} from 'next/router';
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {realEstateActiveColumns} from 'src/constants/tableColumns';
 import useFetch from 'src/hooks/useFetch';
 
@@ -28,7 +27,6 @@ export default function Imobiliarias() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [mainData, setMainData] = useState(data);
-  console.log({mainData});
 
   useEffect(() => {
     const filteredData = filterData(data, searchTerm);
