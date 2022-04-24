@@ -1,7 +1,7 @@
 import {Button, Flex, Heading} from '@chakra-ui/react';
 import {useRouter} from 'next/router';
 
-export default function naoAutenticado() {
+export default function NaoAutenticado() {
   const router = useRouter();
   return (
     <>

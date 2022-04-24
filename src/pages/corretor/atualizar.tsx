@@ -12,7 +12,7 @@ import {FormProvider, useForm} from 'react-hook-form';
 import {useRouter} from 'next/router';
 import {updateBrokerResolver} from '@components/Forms/resolvers/updateBrokerResolver';
 
-export default function atualizarCorretor() {
+export default function AtualizarCorretor() {
   const toast = useToast();
   const methods = useForm({resolver: updateBrokerResolver, mode: 'onChange'});
   const router = useRouter();
