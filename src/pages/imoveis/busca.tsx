@@ -5,7 +5,7 @@ import {getFilteredProperties} from '@services/properties';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
 
-export default function busca() {
+export default function PropertySearch() {
   const router = useRouter();
   const [filteredProperties, setFilteredProperties] = useState<
     TProperty[] | undefined
@@ -26,8 +26,8 @@ export default function busca() {
         </Flex>
       ) : (
         <SimpleGrid columns={2} spacing="40px">
-          {filteredProperties?.map((property) => (
-            <PropertyList property={property} />
+          {filteredProperties?.map((property, key) => (
+            <PropertyList key={key} property={property} />
           ))}
         </SimpleGrid>
       )}
