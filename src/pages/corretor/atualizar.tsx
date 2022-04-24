@@ -7,7 +7,7 @@ import {
   useToast,
   Button,
 } from '@chakra-ui/react';
-import CustomInput from '../../components/Forms/CustomInput';
+import CustomInput from '../../components/CustomInput';
 import {FormProvider, useForm} from 'react-hook-form';
 import {useRouter} from 'next/router';
 import {updateBrokerResolver} from '@components/Forms/resolvers/updateBrokerResolver';

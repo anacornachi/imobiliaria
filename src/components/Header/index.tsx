@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import Container from '@components/layout/Container';
 import Image from 'next/image';
-import logo from '@public/assets/images/Logo.png';
+import logo from '@public/assets/images/logo.png';
 import Link from 'next/link';
 import {HiMenu} from 'react-icons/hi';
 import {useState} from 'react';
@@ -22,7 +22,7 @@ import {signOut, useSession} from 'next-auth/react';
 export default function Header() {
   const [isLargerThan760px] = useMediaQuery('(min-width: 760px)');
   const [isOpen, setIsOpen] = useState(false);
-  const {data, status} = useSession();
+  const {status} = useSession();
 
   return (
     <Container maxH="134px" py="30px">
@@ -94,7 +94,14 @@ export default function Header() {
               ))}
               <MenuItem h="70px" justifyContent="center">
                 {status === 'authenticated' ? (
-                  <Button>LOG OUT</Button>
+                  <Button
+                    variant="secondary"
+                    fontWeight="medium"
+                    w="130px"
+                    onClick={async () => await signOut()}
+                  >
+                    LOG OUT
+                  </Button>
                 ) : (
                   <Button
                     isLoading={status === 'loading'}

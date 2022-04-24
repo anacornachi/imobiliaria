@@ -40,10 +40,6 @@ export const navigation = [
         link: '/imobiliarias',
         label: 'Imobiliárias',
       },
-      {
-        link: '/contato',
-        label: 'Entre em contato',
-      },
     ],
   },
 ];

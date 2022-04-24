@@ -1,6 +1,6 @@
 import {Box, Flex, Text, Link as ChakraLink, Heading} from '@chakra-ui/react';
 import {BsFacebook, BsInstagram, BsTwitter, BsLinkedin} from 'react-icons/bs';
-import logo from '@public/images/logo.png';
+import logo from '@public/assets/images/logo.png';
 import Image from 'next/image';
 import Container from '@components/layout/Container';
 import {navigation} from './navigation';
