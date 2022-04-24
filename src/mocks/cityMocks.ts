@@ -11,4 +11,8 @@ export const cityMocks = [
     value: 'sao-jose',
     label: 'São José dos Campos',
   },
+  {
+    value: 'campinas',
+    label: 'Campinas',
+  },
 ];

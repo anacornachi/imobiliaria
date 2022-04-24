@@ -23,6 +23,7 @@ export default function PropertyList({property}: Props) {
       color="secondary"
       _hover={{boxShadow: 'lg', border: '1px', borderColor: 'primaryBlue'}}
       onClick={() => router.push('/imovel/' + property.id)}
+      cursor="pointer"
     >
       <Flex
         w="100%"
@@ -78,7 +79,7 @@ export default function PropertyList({property}: Props) {
               fontSize={{base: '17px', md: '19px'}}
               fontWeight="200"
             >
-              {property.realEstate.name}
+              {property.realEstate?.name}
             </Heading>
             <Badge
               bg="secondary"

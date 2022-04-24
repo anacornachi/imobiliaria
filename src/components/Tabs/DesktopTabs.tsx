@@ -24,13 +24,14 @@ export default function DesktopTabs() {
   const [isRenting, setIsRenting] = useState(true);
 
   const onSubmit = (data: any) => {
+    console.log(data);
     router.push({
-      pathname: '/imoveis/',
+      pathname: '/imoveis/busca',
       query: {
         mode: isRenting ? 'aluguel' : 'compra',
         city: data.city,
-        type: data.type,
-        price: data.price,
+        // type: data.type,
+        // price: data.price,
       },
     });
   };

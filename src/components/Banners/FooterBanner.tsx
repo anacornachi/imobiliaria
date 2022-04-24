@@ -1,8 +1,10 @@
 import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react';
 import Image from 'next/image';
 import building from '@public/assets/images/building.png';
+import {useRouter} from 'next/router';
 
 export default function FooterBanner() {
+  const router = useRouter();
   return (
     <Flex
       direction={{base: 'column', md: 'row'}}
@@ -29,6 +31,7 @@ export default function FooterBanner() {
           variant="primary"
           mt={{base: '10px', md: '30px'}}
           w={{base: '100%', sm: '50%'}}
+          onClick={() => router.push('/sobre-nos')}
         >
           Entre em contato
         </Button>

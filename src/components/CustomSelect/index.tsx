@@ -41,8 +41,8 @@ export default function CustomSelect({
           options={options}
           isSearchable={true}
           onChange={(newValue) => {
-            const {value} = newValue as TOption;
-            setValue(name, value);
+            const {label} = newValue as TOption;
+            setValue(name, label);
           }}
         />
       </Flex>
