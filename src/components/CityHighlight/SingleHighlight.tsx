@@ -6,18 +6,18 @@ type Props = {
   image: StaticImageData;
 };
 
-export default function CityHighlight({title, image}: Props) {
+export default function SingleHighlight({title, image}: Props) {
   return (
     <Box
-      w={{base: '178px', md: '278px'}}
-      h={{base: '272px', md: '426px'}}
+      w={{base: '178px', lg: '278px'}}
+      h={{base: '272px', lg: '426px'}}
       position="relative"
     >
       <Heading
         textAlign="center"
         position="absolute"
         as="h4"
-        fontSize={{base: '15px', md: '25px'}}
+        fontSize={{base: '15px', md: '20px', lg: '25px'}}
         top={{base: 5, md: 10}}
         w="100%"
         zIndex={1}

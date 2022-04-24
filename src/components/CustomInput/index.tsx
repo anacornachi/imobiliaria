@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react';
 import {ReactNode, useState} from 'react';
 import {useFormContext} from 'react-hook-form';
-
 import {IoEyeOffOutline, IoEyeOutline} from 'react-icons/io5';
 
 type Props = {
