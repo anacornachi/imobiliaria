@@ -3,23 +3,23 @@ export const navigation = [
     title: 'Nossa equipe',
     navigation: [
       {
-        link: '/',
+        link: 'https://github.com/anacornachi',
         label: 'Ana Cornachi',
       },
       {
-        link: '/',
+        link: 'https://github.com/helena-machado',
         label: 'Helena Machado',
       },
       {
-        link: '/',
+        link: 'https://github.com/ivangeier',
         label: 'Ivan Geier',
       },
       {
-        link: '/',
+        link: 'https://github.com/Nadiamizael',
         label: 'Nádia Mizael',
       },
       {
-        link: '/',
+        link: 'https://github.com/sabrinacouto',
         label: 'Sabrina Couto',
       },
     ],
@@ -29,19 +29,19 @@ export const navigation = [
     title: 'Nossa empresa',
     navigation: [
       {
-        link: '/',
+        link: '/sobre-nos',
         label: 'Sobre Nós',
       },
       {
-        link: '/',
+        link: '/corretores',
         label: 'Corretores',
       },
       {
-        link: '/',
+        link: '/imobiliarias',
         label: 'Imobiliárias',
       },
       {
-        link: '/',
+        link: '/contato',
         label: 'Entre em contato',
       },
     ],

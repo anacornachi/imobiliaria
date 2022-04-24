@@ -11,19 +11,20 @@ import {
 } from '@chakra-ui/react';
 import {ReactNode, useState} from 'react';
 import {useFormContext} from 'react-hook-form';
+
 import {IoEyeOffOutline, IoEyeOutline} from 'react-icons/io5';
 
 type Props = {
   name: string;
   title?: string;
-  variant?: string;
+  bgColor?: string;
   leftIcon?: ReactNode;
   disabled?: boolean;
 } & InputProps;
 
 export default function CustomInput({
   name,
-  variant,
+  bgColor,
   title,
   leftIcon,
   disabled,
@@ -32,14 +33,13 @@ export default function CustomInput({
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
-  //   const {formState, register} = useFormContext();
+  const {formState, register} = useFormContext();
 
-  //   const {errors} = formState;
-  //   const error = errors[name];
+  const {errors} = formState;
+  const error = errors[name];
 
   return (
-    // isInvalid={Boolean(error)}  mb={error ? '10px' : 0}
-    <FormControl w={w}>
+    <FormControl w={w} isInvalid={Boolean(error)} mb={error ? '10px' : 0}>
       <Heading
         as="h3"
         fontSize="18px"
@@ -66,9 +66,9 @@ export default function CustomInput({
           pr={props.type === 'password' ? '15%' : '16px'}
           border="none"
           _focus={{boxShadow: 'none', border: 'none'}}
-          bg={disabled ? 'disabled' : 'input'}
+          bg={disabled ? 'disabled' : bgColor}
           borderRadius="20px"
-          //   {...register(name)}
+          {...register(name)}
         />
 
         {props.type === 'password' && (
@@ -92,11 +92,11 @@ export default function CustomInput({
       <FormErrorMessage
         fontSize={{base: 'xs', lg: 'sm'}}
         mt="4px"
-        color="pink"
+        color="primaryBlue"
         position="absolute"
         id={`error-message-${name}`}
       >
-        {/* {String(error?.message)} */}
+        {String(error?.message)}
       </FormErrorMessage>
     </FormControl>
   );

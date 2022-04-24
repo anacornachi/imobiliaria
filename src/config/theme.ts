@@ -12,7 +12,6 @@ const theme = extendTheme({
     delete: '#DB0000',
     input: '#fbfcfe',
     disabled: '#ccccce',
-    delete: '#DB0000',
   },
   fonts: {
     heading: "'Be Vietnam Pro', sans-serif;",

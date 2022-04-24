@@ -30,14 +30,13 @@ export default function Footer() {
             </Box>
             <Text
               color="secondary"
-              fontFamily="vietnam"
               fontSize="sm"
               maxW={{base: '100%', md: '60%'}}
             >
               Esse projeto tem por objetivo avaliação final do curso Resilia -
               Formação Full Stack.
             </Text>
-            <Text color="secondary" fontFamily="vietnam" fontSize="sm">
+            <Text color="secondary" fontSize="sm">
               * Não somos uma imobiliária de verdade.
             </Text>
             <Flex
@@ -52,6 +51,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsFacebook />
                   </ChakraLink>
@@ -61,6 +61,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsTwitter />
                   </ChakraLink>
@@ -70,6 +71,7 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsInstagram />
                   </ChakraLink>
@@ -79,12 +81,13 @@ export default function Footer() {
                     color="title"
                     _hover={{color: 'primaryBlue'}}
                     _focus={{boxShadow: 'none'}}
+                    target="_blank"
                   >
                     <BsLinkedin />
                   </ChakraLink>
                 </Link>
               </Flex>
-              <Text color="secondary" fontFamily="vietnam" fontSize="sm">
+              <Text color="secondary" fontSize="sm">
                 © 2022 • Todos os direitos reservados.
               </Text>
             </Flex>
@@ -96,29 +99,25 @@ export default function Footer() {
             gap={{base: '30px', md: '0'}}
           >
             {navigation &&
-              navigation.map((page) => (
+              navigation.map((page, key) => (
                 <Flex
+                  key={key}
                   direction="column"
                   align={{base: 'center', md: 'flex-start'}}
                   gap="20px"
                 >
-                  <Heading
-                    color="title"
-                    fontFamily="vietnam"
-                    fontSize="lg"
-                    fontWeight="bold"
-                  >
+                  <Heading color="title" fontSize="lg" fontWeight="bold">
                     {page.title}
                   </Heading>
 
-                  {page.navigation.map((item) => (
-                    <Link href={item.link}>
+                  {page.navigation.map((item, key) => (
+                    <Link href={item.link} key={key} passHref>
                       <ChakraLink
                         color="title"
-                        fontFamily="vietnam"
                         fontSize="md"
-                        _hover={{color: 'secondary'}}
+                        _hover={{color: 'primaryBlue'}}
                         _focus={{boxShadow: 'none'}}
+                        target="_blank"
                       >
                         {item.label}
                       </ChakraLink>
