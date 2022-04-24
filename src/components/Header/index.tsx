@@ -24,6 +24,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const {status} = useSession();
 
+  console.log({status});
+
   return (
     <Container maxH="134px" py="30px">
       <Flex justify="space-between" align="center">

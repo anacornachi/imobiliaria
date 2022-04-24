@@ -9,7 +9,7 @@ import {
   Tabs,
 } from '@chakra-ui/react';
 import {FiSearch} from 'react-icons/fi';
-import {FormEvent, useState} from 'react';
+import {useState} from 'react';
 import {cityMocks} from 'src/mocks/cityMocks';
 import CustomSelect from '@components/CustomSelect';
 import {typeOfProperty} from 'src/constants/typeOfProperty';

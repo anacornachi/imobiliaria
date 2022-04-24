@@ -33,6 +33,7 @@ export default function PropertyList({property}: Props) {
         gap={{base: '36px', md: '56px', lg: '20px'}}
       >
         <Image
+          alt=""
           w={{base: '100%', sm: '30%'}}
           h="191px"
           objectFit="cover"

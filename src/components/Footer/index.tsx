@@ -46,7 +46,7 @@ export default function Footer() {
               rowGap="30px"
             >
               <Flex width="150px" justify="space-between">
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -56,7 +56,7 @@ export default function Footer() {
                     <BsFacebook />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -66,7 +66,7 @@ export default function Footer() {
                     <BsTwitter />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -76,7 +76,7 @@ export default function Footer() {
                     <BsInstagram />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}

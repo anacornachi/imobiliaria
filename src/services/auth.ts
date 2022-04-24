@@ -5,7 +5,7 @@ export const authenticate = async ({email, password}: TCredentials) => {
     email,
     password,
   });
-  console.log(data);
+  console.log({data});
   return data;
 };
 

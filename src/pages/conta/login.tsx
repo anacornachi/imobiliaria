@@ -23,6 +23,7 @@ export default function Login() {
       redirect: false,
       ...data,
     })) as any;
+    console.log({auth});
     if (auth?.error) {
       // Handle auth failed
       console.log('Auth failed', auth.error);

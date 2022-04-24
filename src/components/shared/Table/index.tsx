@@ -1,7 +1,6 @@
 import {
   Button,
   Flex,
-  Input,
   Spinner,
   Table as ChakraTable,
   TableContainer,
@@ -11,11 +10,9 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
-import Container from '@components/layout/Container';
 import {usePagination} from 'react-use-pagination';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
-import debounce from 'lodash.debounce';
-import React, {ReactNode, useEffect, useMemo, useState} from 'react';
+import React, {ReactNode} from 'react';
 
 type Props = {
   columns: any[];
