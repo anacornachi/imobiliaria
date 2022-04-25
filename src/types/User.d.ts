@@ -7,4 +7,10 @@ type TUser = {
   password: string;
   role: string;
   isActive: boolean;
+  city: string;
+};
+
+type TUserPassword = {
+  oldPassword: string;
+  newPassword: string;
 };
