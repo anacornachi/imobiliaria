@@ -11,7 +11,7 @@ import Container from '@components/layout/Container';
 import Image, {StaticImageData} from 'next/image';
 import casa from '@public/assets/images/casa.png';
 import casinha from '@public/assets/images/casinha.png';
-import logo from '@public/assets/images/Logo.png';
+import logo from '@public/assets/images/logo.png';
 import {IoBedOutline} from 'react-icons/io5';
 import {MdDirectionsCar} from 'react-icons/md';
 import {IoLocationOutline} from 'react-icons/io5';
