@@ -1,21 +1,21 @@
-import {
-  Button,
-  Heading,
-  Link as ChakraLink,
-  SimpleGrid,
-  useToast,
-} from '@chakra-ui/react';
+import {Button, Heading, SimpleGrid, useToast} from '@chakra-ui/react';
 import {FormProvider, useForm} from 'react-hook-form';
-
 import CustomInput from '@components/CustomInput';
 import {updatePasswordResolver} from './resolvers/updatePasswordResolver';
+import {updatePassword} from '@services/user';
 
 export default function UpdatePasswordForm() {
   const toast = useToast();
   const methods = useForm({resolver: updatePasswordResolver, mode: 'onChange'});
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    try {
+      const dados = await updatePassword(data);
+      console.log(dados);
+    } catch (error) {
+      methods.reset();
+      console.log(error);
+    }
   };
 
   const onError = () => {
@@ -43,14 +43,14 @@ export default function UpdatePasswordForm() {
       </Heading>
       <FormProvider {...methods}>
         <CustomInput
-          name="actualPassword"
+          name="oldPassword"
           bgColor="input"
           placeholder="Senha atual..."
           title="Senha atual *"
           type="password"
         />
         <CustomInput
-          name="password"
+          name="newPassword"
           bgColor="input"
           placeholder="Nova senha..."
           title="Nova senha *"

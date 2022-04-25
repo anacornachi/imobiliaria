@@ -1,7 +1,8 @@
 import {Button, SimpleGrid, useToast} from '@chakra-ui/react';
 import CustomInput from '@components/CustomInput';
+import {updateUser} from '@services/user';
 import {FormProvider, useForm} from 'react-hook-form';
-import {updateUser} from './resolvers/updateUser';
+import {updateUserResolver} from './resolvers/updateUserResolver';
 
 type Props = {
   defaultValues?: TUser;
@@ -10,13 +11,20 @@ type Props = {
 export default function UpdateUserForm({defaultValues}: Props) {
   const toast = useToast();
   const methods = useForm({
-    resolver: updateUser,
+    resolver: updateUserResolver,
     mode: 'onChange',
     defaultValues,
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (userData: any) => {
+    await updateUser(userData);
+    toast({
+      status: 'success',
+      title: 'Dados atualizados com sucesso!',
+      position: 'bottom-right',
+      duration: 4000,
+      isClosable: true,
+    });
   };
 
   const onError = () => {
