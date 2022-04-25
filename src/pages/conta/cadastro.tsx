@@ -7,7 +7,7 @@ import {AiFillAlert} from 'react-icons/ai';
 export default function Cadastro() {
   return (
     <Container>
-      <CustomInput
+      {/* <CustomInput
         name="exemplo"
         placeholder="teste"
         title="Titulo"
@@ -15,7 +15,7 @@ export default function Cadastro() {
         leftIcon={<AiFillAlert />}
         // disabled={true}
         w="100%"
-      />
+      /> */}
     </Container>
   );
 }
