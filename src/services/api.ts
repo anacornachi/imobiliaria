@@ -8,10 +8,15 @@ const api = axios.create({
 const requestHandler = async (req: AxiosRequestConfig) => {
   if (typeof window !== 'undefined') {
     const session = await getSession();
+    const token =
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.e30.jEA1LDxl2QPjecebRiPz1EPRKJSDtLrZwBd1YJxBLW8';
 
-    if (session?.jwt && req.headers) {
-      req.headers.Authorization = `Bearer ${session.jwt}`;
+    if (req.headers) {
+      req.headers.Authorization = `Bearer ${token}`;
     }
+    // if (session?.jwt && req.headers) {
+    //   // req.headers.Authorization = `Bearer ${session.jwt}`;
+    // }
   }
 
   return req;

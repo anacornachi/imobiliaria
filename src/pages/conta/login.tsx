@@ -10,7 +10,7 @@ import Link from 'next/link';
 import {FormProvider, useForm} from 'react-hook-form';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
-import CustomInput from '@components/Forms/CustomInput';
+import CustomInput from '@components/CustomInput';
 import {loginResolver} from '@components/Forms/resolvers/loginResolver';
 
 export default function Login() {
@@ -23,6 +23,7 @@ export default function Login() {
       redirect: false,
       ...data,
     })) as any;
+    console.log({auth});
     if (auth?.error) {
       // Handle auth failed
       console.log('Auth failed', auth.error);

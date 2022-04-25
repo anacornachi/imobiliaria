@@ -1,4 +1,6 @@
-import CustomInput from '@components/Forms/CustomInput';
+import {Heading} from '@chakra-ui/react';
+import CustomInput from '@components/CustomInput';
+
 import Container from '@components/layout/Container';
 import {AiFillAlert} from 'react-icons/ai';
 

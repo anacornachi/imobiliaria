@@ -12,6 +12,7 @@ export default NextAuth({
         password: {},
       },
       async authorize(credentials) {
+        console.log({credentials});
         if (credentials) {
           try {
             const {token, user} = await authenticate(credentials);

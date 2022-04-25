@@ -1,4 +1,3 @@
-import {UseSessionOptions} from 'next-auth/react';
 import {useEffect, useState} from 'react';
 
 type Props = {

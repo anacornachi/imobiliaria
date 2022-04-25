@@ -1,6 +1,6 @@
 import {Box, Flex, Text, Link as ChakraLink, Heading} from '@chakra-ui/react';
 import {BsFacebook, BsInstagram, BsTwitter, BsLinkedin} from 'react-icons/bs';
-import logo from '@public/images/logo.png';
+import logo from '@public/assets/images/logo.png';
 import Image from 'next/image';
 import Container from '@components/layout/Container';
 import {navigation} from './navigation';
@@ -46,7 +46,7 @@ export default function Footer() {
               rowGap="30px"
             >
               <Flex width="150px" justify="space-between">
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -56,7 +56,7 @@ export default function Footer() {
                     <BsFacebook />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -66,7 +66,7 @@ export default function Footer() {
                     <BsTwitter />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}
@@ -76,7 +76,7 @@ export default function Footer() {
                     <BsInstagram />
                   </ChakraLink>
                 </Link>
-                <Link href="/">
+                <Link href="/" passHref>
                   <ChakraLink
                     color="title"
                     _hover={{color: 'primaryBlue'}}

@@ -2,7 +2,7 @@ import Container from '../../components/layout/Container';
 import {Heading, Flex} from '@chakra-ui/react';
 import Overview from '@components/Overview';
 
-export default function admin() {
+export default function Admin() {
   return (
     <>
       <Container>
