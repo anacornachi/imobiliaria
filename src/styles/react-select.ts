@@ -14,6 +14,10 @@ export const customStyles: StylesConfig = {
     ...provided,
     border: 'none',
     width: '100%',
+    height: '35px',
+    padding: '0 10px',
+    borderRadius: '20px',
+    boxShadow: 'none',
   }),
   valueContainer: (provided, state) => ({
     ...provided,
