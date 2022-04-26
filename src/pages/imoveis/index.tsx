@@ -1,16 +1,38 @@
-import {Box, Flex, Heading, Input, Spinner, Text} from '@chakra-ui/react';
+import {
+  Box,
+  Checkbox,
+  Flex,
+  Heading,
+  Input,
+  Radio,
+  RadioGroup,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
+import CustomCheckbox from '@components/CustomCheckbox';
 import Container from '@components/layout/Container';
 import PropertyList from '@components/PropertyList';
-import {getAllProperties} from '@services/properties';
+import {getAllProperties, getFilteredProperties} from '@services/properties';
 import filterData from '@utils/filterData';
-import {ChangeEvent, useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
+import {ChangeEvent, useEffect, useMemo, useState} from 'react';
+import {FormProvider, useForm} from 'react-hook-form';
 import useFetch from 'src/hooks/useFetch';
 
 export default function Imoveis() {
+  const router = useRouter();
+  const queries = useMemo(
+    () => router.asPath.split(router.pathname)[1],
+    [router.query],
+  );
   const {data, isLoading} = useFetch<TProperty[] | undefined>({
-    service: getAllProperties,
+    service: () => getFilteredProperties(queries),
+    options: {
+      trigger: 'onQueryChange',
+    },
   });
-
+  console.log(router);
   const [searchTerm, setSearchTerm] = useState('');
   const [propertiesData, setPropertiesData] = useState(data);
 
@@ -25,6 +47,34 @@ export default function Imoveis() {
 
   const handleChange = (event: any) => {
     setSearchTerm(event.target.value);
+  };
+
+  const bedroomOptions = [1, 2, 3, 4];
+  const bathroomOptions = [1, 2, 3, 4];
+  const garageOptions = [1, 2, 3, 4];
+
+  const [beds, setBeds] = useState<number | undefined>();
+  const [baths, setBaths] = useState<number | undefined>();
+  const [garage, setGarage] = useState<number | undefined>();
+
+  const handleStateToQueryChange = (
+    number: number,
+    state: number | undefined,
+    setState: (number?: number) => void,
+    query: string,
+  ) => {
+    if (number === state) {
+      setState(undefined);
+    } else {
+      setState(number);
+    }
+    delete router.query[query];
+    router.push({
+      query: {
+        ...router.query,
+        ...(number === state ? {} : {[query]: number}),
+      },
+    });
   };
 
   return (
@@ -54,10 +104,91 @@ export default function Imoveis() {
         </Text>
       </Flex>
       <Flex mt="40px">
-        <Box w="20%" bg="red">
-          teste
+        <Box w="20%">
+          <Flex
+            direction="column"
+            bg="main"
+            borderRadius="40px"
+            py="40px"
+            px="20px"
+            gap="20px"
+          >
+            <Heading as="h5" fontSize="25px" alignSelf="center">
+              Quartos
+            </Heading>
+            <Flex
+              direction="column"
+              gap="10px"
+              color="description"
+              fontWeight="medium"
+            >
+              {bedroomOptions.map((option) => (
+                <Flex
+                  key={option}
+                  onClick={() =>
+                    handleStateToQueryChange(option, beds, setBeds, 'beds')
+                  }
+                  cursor="pointer"
+                >
+                  <Checkbox
+                    isChecked={String(option) === (router.query.beds as string)}
+                  />
+                  <Text ml={2}>
+                    {option} quarto{option > 1 ? 's' : ''}
+                  </Text>
+                </Flex>
+              ))}
+            </Flex>
+            <Heading as="h5" fontSize="25px" alignSelf="center">
+              Banheiros
+            </Heading>
+            <Flex
+              direction="column"
+              gap="10px"
+              color="description"
+              fontWeight="medium"
+            >
+              {bathroomOptions.map((option) => (
+                <Flex
+                  key={option}
+                  onClick={() =>
+                    handleStateToQueryChange(option, baths, setBaths, 'baths')
+                  }
+                  cursor="pointer"
+                >
+                  <Checkbox
+                    isChecked={
+                      String(option) === (router.query.baths as string)
+                    }
+                  />
+                  <Text ml={2}>
+                    {option} banheiro{option > 1 ? 's' : ''}
+                  </Text>
+                </Flex>
+              ))}
+            </Flex>
+            <Heading as="h5" fontSize="25px" alignSelf="center">
+              Garagens
+            </Heading>
+            <Flex
+              direction="column"
+              gap="10px"
+              color="description"
+              fontWeight="medium"
+            >
+              {/* <RadioGroup onChange={setValue} value={value}></RadioGroup> */}
+              <RadioGroup>
+                <Stack direction="column">
+                  <Radio value="1">1 garagem</Radio>
+                  <Radio value="2">2 garagens</Radio>
+                  <Radio value="3">3 garagens</Radio>
+                  <Radio value="4">4 garagens +</Radio>
+                </Stack>
+              </RadioGroup>
+            </Flex>
+          </Flex>
         </Box>
-        <Flex w="80%" bg="yellow" direction="column">
+        <Flex w="80%" direction="column" align="center" gap="60px">
           <Input
             alignSelf="end"
             mt="10px"

@@ -9,11 +9,13 @@ import {
 } from '@chakra-ui/react';
 import CustomCheckbox from '@components/CustomCheckbox';
 import CustomInput from '@components/CustomInput';
+import CustomSelect from '@components/CustomSelect';
 import {signUp} from '@services/auth';
 import createUserSerializer from '@utils/createUserSerializer';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
+import {brazilianStates} from 'src/constants/brazilianStates';
 import {createUserResolver} from './resolvers/createUserResolver';
 
 export default function CreateUserForm() {
@@ -131,11 +133,12 @@ export default function CreateUserForm() {
             mask="999.999.999-99"
             title="CPF *"
           />
-          <CustomInput
-            name="city"
-            bgColor="input"
-            placeholder="Sua cidade..."
-            title="Sua cidade *"
+          <CustomSelect
+            name="state"
+            label="Seu estado *"
+            placeholder="Seu estado..."
+            options={brazilianStates}
+            fontSize="18px"
           />
           <CustomCheckbox
             name="userTerms"

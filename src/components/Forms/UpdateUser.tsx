@@ -1,7 +1,9 @@
 import {Button, SimpleGrid, useToast} from '@chakra-ui/react';
 import CustomInput from '@components/CustomInput';
+import CustomSelect from '@components/CustomSelect';
 import {updateUser} from '@services/user';
 import {FormProvider, useForm} from 'react-hook-form';
+import {brazilianStates} from 'src/constants/brazilianStates';
 import {updateUserResolver} from './resolvers/updateUserResolver';
 
 type Props = {
@@ -70,11 +72,12 @@ export default function UpdateUserForm({defaultValues}: Props) {
           title="CPF *"
           disabled={true}
         />
-        <CustomInput
-          name="city"
-          bgColor="input"
-          placeholder="Cidade..."
-          title="Cidade *"
+        <CustomSelect
+          name="state"
+          label="Seu estado *"
+          placeholder="Seu estado..."
+          options={brazilianStates}
+          fontSize="18px"
         />
         <Button variant="primary" type="submit" mt="28px" h="45px">
           Atualizar dados
