@@ -14,7 +14,7 @@ export const updateUser = async (userData: TUser) => {
 
 export const updatePassword = async (userPasswordData: TUserPassword) => {
   const {data} = await api.patch('/user/password', {
-    userPasswordData,
+    ...userPasswordData,
   });
   return data;
 };

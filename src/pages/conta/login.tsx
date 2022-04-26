@@ -19,15 +19,12 @@ export default function Login() {
   const router = useRouter();
 
   const {data} = useSession();
-  console.log({data});
 
   const onSubmit = async (data: any) => {
     const auth = (await signIn('credentials', {
       redirect: false,
       ...data,
     })) as any;
-
-    console.log({auth, data});
 
     if (auth?.error) {
       // Handle auth failed

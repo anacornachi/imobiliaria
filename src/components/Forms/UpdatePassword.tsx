@@ -10,11 +10,18 @@ export default function UpdatePasswordForm() {
 
   const onSubmit = async (data: any) => {
     try {
-      const dados = await updatePassword(data);
-      console.log(dados);
+      await updatePassword(data);
+      toast({
+        status: 'success',
+        title: 'Senha alterada com sucesso!',
+        position: 'bottom-right',
+        duration: 4000,
+        isClosable: true,
+      });
+      methods.reset();
     } catch (error) {
       methods.reset();
-      console.log(error);
+      onError();
     }
   };
 
