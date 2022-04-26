@@ -6,7 +6,7 @@ import {FaBath, FaCar} from 'react-icons/fa';
 
 type Props = {
   property: TProperty;
-  w: string;
+  w?: string;
 };
 
 export default function PropertyList({property, ...props}: Props) {
