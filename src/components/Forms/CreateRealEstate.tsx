@@ -15,6 +15,7 @@ import createUserSerializer from '@utils/createUserSerializer';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
+import {brazilianStates} from 'src/constants/brazilianStates';
 import {yesOrNoOption} from 'src/constants/yesOrNo';
 import {createRealEstateResolver} from './resolvers/createRealEstateResolver';
 
@@ -120,6 +121,8 @@ export default function CreateRealEstateForm() {
             label="Já possui corretores? *"
             placeholder="Selecione..."
             options={yesOrNoOption}
+            fontSize="18px"
+            mb="7px"
           />
           <CustomInput
             name="initialProperties"
@@ -160,11 +163,12 @@ export default function CreateRealEstateForm() {
             mask="999.999.999-99"
             title="CPF do admin *"
           />
-          <CustomInput
-            name="city"
-            bgColor="input"
-            placeholder="Sua cidade..."
-            title="Sua cidade *"
+          <CustomSelect
+            name="state"
+            label="Seu estado *"
+            placeholder="Seu estado..."
+            options={brazilianStates}
+            fontSize="18px"
           />
           <CustomCheckbox
             name="realEstateTerms"

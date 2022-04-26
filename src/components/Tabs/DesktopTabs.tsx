@@ -9,13 +9,13 @@ import {
 } from '@chakra-ui/react';
 import {FiSearch} from 'react-icons/fi';
 import {useState} from 'react';
-import {cityMocks} from 'src/mocks/cityMocks';
 import CustomSelect from '@components/CustomSelect';
 import {typeOfProperty} from 'src/constants/typeOfProperty';
 import {maxValue} from 'src/constants/maxValue';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
 import {searchResolver} from '@components/Forms/resolvers/searchResolver';
+import {brazilianStates} from 'src/constants/brazilianStates';
 
 export default function DesktopTabs() {
   const router = useRouter();
@@ -26,10 +26,11 @@ export default function DesktopTabs() {
     router.push({
       pathname: '/imoveis/busca',
       query: {
-        mode: isRenting ? 'aluguel' : 'compra',
-        city: data.city,
-        // type: data.type,
-        // price: data.price,
+        mode: isRenting ? 'aluguel' : 'venda',
+        state: data.state,
+        type: data.type.toLowerCase(),
+        min: data.price.split('-')[0],
+        max: data.price.split('-')[1],
       },
     });
   };
@@ -75,10 +76,10 @@ export default function DesktopTabs() {
         >
           <FormProvider {...methods}>
             <CustomSelect
-              name="city"
+              name="state"
               label="Localização *"
               placeholder="Selecione..."
-              options={cityMocks}
+              options={brazilianStates}
             />
             <Divider orientation="vertical" />
             <CustomSelect

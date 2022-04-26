@@ -1,4 +1,4 @@
-import {Flex, FormControl, Text} from '@chakra-ui/react';
+import {Flex, FormControl, Text, TextProps} from '@chakra-ui/react';
 import {useState} from 'react';
 import {useFormContext} from 'react-hook-form';
 import Select from 'react-select';
@@ -9,7 +9,7 @@ type Props = {
   label: string;
   placeholder: string;
   options: TOption[];
-};
+} & TextProps;
 type TOption = {
   value: string;
   label: string;
@@ -20,6 +20,7 @@ export default function CustomSelect({
   label,
   placeholder,
   options,
+  ...props
 }: Props) {
   const {formState, setValue} = useFormContext();
 
@@ -30,19 +31,18 @@ export default function CustomSelect({
   return (
     <FormControl isInvalid={Boolean(error)}>
       <Flex direction="column" justify="center">
-        <Text color="title" fontWeight="bold" mb="5px">
+        <Text color="title" fontWeight="bold" mb="5px" {...props}>
           {label}
         </Text>
         <Select
           styles={customStyles}
           placeholder={placeholder}
           defaultValue={selectedOption}
-          // isClearable={true}
           options={options}
           isSearchable={true}
           onChange={(newValue) => {
-            const {label} = newValue as TOption;
-            setValue(name, label);
+            const {value} = newValue as TOption;
+            setValue(name, value);
           }}
         />
       </Flex>
