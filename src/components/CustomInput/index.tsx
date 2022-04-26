@@ -12,6 +12,7 @@ import {
 import {ReactNode, useState} from 'react';
 import {useFormContext} from 'react-hook-form';
 import {IoEyeOffOutline, IoEyeOutline} from 'react-icons/io5';
+import InputMask from 'react-input-mask';
 
 type Props = {
   name: string;
@@ -19,6 +20,7 @@ type Props = {
   bgColor?: string;
   leftIcon?: ReactNode;
   disabled?: boolean;
+  mask?: string;
 } & InputProps;
 
 export default function CustomInput({
@@ -27,6 +29,7 @@ export default function CustomInput({
   title,
   leftIcon,
   disabled,
+  mask,
   w,
   ...props
 }: Props) {
@@ -51,14 +54,16 @@ export default function CustomInput({
         {leftIcon && <InputLeftElement children={leftIcon} />}
         <Input
           {...props}
-          color="description"
           type={
             props.type === 'password'
               ? showPassword
                 ? 'text'
                 : 'password'
-              : undefined
+              : props.type ?? undefined
           }
+          color="description"
+          as={mask ? InputMask : 'input'}
+          {...(mask ? {mask: mask, maskChar: null} : {})}
           readOnly={disabled}
           px="16px"
           fontSize={{base: '14px', md: '16px'}}
@@ -77,6 +82,7 @@ export default function CustomInput({
               w="100%"
               size="lg"
               bg="none"
+              tabIndex={-1}
               p="0"
               _focus={{boxShadow: 'none', bg: 'none'}}
               _hover={{bg: 'none'}}

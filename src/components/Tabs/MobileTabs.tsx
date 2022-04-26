@@ -24,7 +24,6 @@ export default function MobileTabs() {
   const [isRenting, setIsRenting] = useState(true);
 
   const onSubmit = (data: any) => {
-    console.log(data);
     router.push({
       pathname: '/imoveis/busca',
       query: {

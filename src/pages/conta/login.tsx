@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 import {FormProvider, useForm} from 'react-hook-form';
-import {signIn} from 'next-auth/react';
+import {signIn, useSession} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import CustomInput from '@components/CustomInput';
 import {loginResolver} from '@components/Forms/resolvers/loginResolver';
@@ -18,12 +18,14 @@ export default function Login() {
   const methods = useForm({resolver: loginResolver, mode: 'onChange'});
   const router = useRouter();
 
+  const {data} = useSession();
+
   const onSubmit = async (data: any) => {
     const auth = (await signIn('credentials', {
       redirect: false,
       ...data,
     })) as any;
-    console.log({auth});
+
     if (auth?.error) {
       // Handle auth failed
       console.log('Auth failed', auth.error);
@@ -104,7 +106,7 @@ export default function Login() {
                 bgColor="input"
               />
             </Flex>
-            <Link href="/account/recover" passHref>
+            <Link href="/conta/recuperacao-de-senha" passHref>
               <ChakraLink
                 _hover={{color: 'primaryBlue'}}
                 _focus={{boxShadow: 'none'}}
@@ -125,7 +127,7 @@ export default function Login() {
               Entrar
             </Button>
           </FormProvider>
-          <Link href="/account/register" passHref>
+          <Link href="/conta/cadastro" passHref>
             <ChakraLink
               _hover={{color: 'primaryBlue'}}
               _focus={{boxShadow: 'none'}}

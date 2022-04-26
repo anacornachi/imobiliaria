@@ -1,21 +1,15 @@
-import {Heading} from '@chakra-ui/react';
-import CustomInput from '@components/CustomInput';
-
+import {Flex} from '@chakra-ui/react';
+import CreateRealEstateForm from '@components/Forms/CreateRealEstate';
+import CreateUserForm from '@components/Forms/CreateUser';
 import Container from '@components/layout/Container';
-import {AiFillAlert} from 'react-icons/ai';
 
 export default function Cadastro() {
   return (
-    <Container>
-      {/* <CustomInput
-        name="exemplo"
-        placeholder="teste"
-        title="Titulo"
-        // type="password"
-        leftIcon={<AiFillAlert />}
-        // disabled={true}
-        w="100%"
-      /> */}
+    <Container py="20px">
+      <Flex direction="column" gap="30px">
+        <CreateUserForm />
+        <CreateRealEstateForm />
+      </Flex>
     </Container>
   );
 }

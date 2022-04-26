@@ -11,8 +11,7 @@ export default NextAuth({
         email: {},
         password: {},
       },
-      async authorize(credentials) {
-        console.log({credentials});
+      async authorize(credentials, req) {
         if (credentials) {
           try {
             const {token, user} = await authenticate(credentials);
@@ -37,10 +36,6 @@ export default NextAuth({
   session: {
     // Seconds - How long until an idle session expires and is no longer valid.
     maxAge: 60 * 60 * 24, // 24 hours
-  },
-
-  jwt: {
-    secret: process.env.AUTH_SECRET,
   },
 
   callbacks: {
