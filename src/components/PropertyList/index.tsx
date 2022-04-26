@@ -1,4 +1,4 @@
-import {Flex, Box, Image, Badge, Heading} from '@chakra-ui/react';
+import {Flex, Box, Image, Badge, Heading, BoxProps} from '@chakra-ui/react';
 import convertToBRL from '@utils/convertToBRL';
 import {useRouter} from 'next/router';
 import {IoBed} from 'react-icons/io5';
@@ -6,14 +6,14 @@ import {FaBath, FaCar} from 'react-icons/fa';
 
 type Props = {
   property: TProperty;
+  w: string;
 };
 
-export default function PropertyList({property}: Props) {
+export default function PropertyList({property, ...props}: Props) {
   const router = useRouter();
 
   return (
     <Box
-      maxW="910px"
       h="fit-content"
       maxH={{base: 'fit-content', md: '249px'}}
       borderRadius="30px"
@@ -24,6 +24,7 @@ export default function PropertyList({property}: Props) {
       _hover={{boxShadow: 'lg', border: '1px', borderColor: 'primaryBlue'}}
       onClick={() => router.push('/imovel/' + property.id)}
       cursor="pointer"
+      {...props}
     >
       <Flex
         w="100%"
@@ -54,19 +55,19 @@ export default function PropertyList({property}: Props) {
               <Heading as="h4" fontSize={{base: '13px', md: '19px'}}>
                 {property.amountBedrooms}
               </Heading>
-              <IoBed />
+              <IoBed size="25px" />
             </Flex>
             <Flex align="center" gap="12px">
               <Heading as="h4" fontSize={{base: '13px', md: '19px'}}>
                 {property.amountBathrooms}
               </Heading>
-              <FaBath />
+              <FaBath size="20px" />
             </Flex>
             <Flex align="center" gap="12px">
               <Heading as="h4" fontSize={{base: '13px', md: '19px'}}>
                 {property.amountGarage}
               </Heading>
-              <FaCar />
+              <FaCar size="20px" />
             </Flex>
           </Flex>
           <Flex
