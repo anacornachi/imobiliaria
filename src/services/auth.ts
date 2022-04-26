@@ -5,24 +5,39 @@ export const authenticate = async ({email, password}: TCredentials) => {
     email,
     password,
   });
-  console.log({data});
+
   return data;
 };
 
-export const signUp = async ({
-  firstName,
-  lastName,
-  email,
-  password,
-  confirmPassword,
-}: TNewUser) => {
-  const {data} = await api.post('/user/register', {
-    firstName,
-    lastName,
-    email,
-    password,
-    confirmPassword,
-  });
+export const signUp = async (
+  userData: TUser | TNewRealEstate,
+  role: string,
+) => {
+  if (role === 'client') {
+    const {cpf, ...rest} = userData;
+    const {data} = await api.post('/user/register', {
+      cpf: cpf,
+      ...rest,
+      role: role,
+    });
 
-  return data;
+    return data;
+  } else if (role === 'realEstate') {
+    const {name, cnpj, city, initialBroker, initialProperties, ...user} =
+      userData as TNewRealEstate;
+    const {data} = await api.post('/realestate/register', {
+      userData: {
+        city,
+        ...user,
+        role: 'realEstate',
+      },
+      realEstateData: {
+        name,
+        cnpj,
+        city,
+        initialBroker: initialBroker === 'Sim',
+        initialProperties,
+      },
+    });
+  }
 };

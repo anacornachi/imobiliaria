@@ -37,7 +37,7 @@ export default function CustomSelect({
           styles={customStyles}
           placeholder={placeholder}
           defaultValue={selectedOption}
-          isClearable={true}
+          // isClearable={true}
           options={options}
           isSearchable={true}
           onChange={(newValue) => {

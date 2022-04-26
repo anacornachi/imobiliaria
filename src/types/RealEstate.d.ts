@@ -9,3 +9,18 @@ type TRealEstate = {
   brokers?: number;
   status?: string;
 };
+
+type TNewRealEstate = {
+  name: string;
+  cnpj: string;
+  city?: string;
+  initialProperties?: string;
+  initialBroker?: string;
+  firstName: string;
+  lastName: string;
+  cpf: string;
+  email: string;
+  password: string;
+  role: string;
+  city: string;
+};

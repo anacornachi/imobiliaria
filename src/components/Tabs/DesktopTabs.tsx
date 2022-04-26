@@ -23,7 +23,6 @@ export default function DesktopTabs() {
   const [isRenting, setIsRenting] = useState(true);
 
   const onSubmit = (data: any) => {
-    console.log(data);
     router.push({
       pathname: '/imoveis/busca',
       query: {
