@@ -23,18 +23,18 @@ export const signUp = async (
 
     return data;
   } else if (role === 'realEstate') {
-    const {name, cnpj, city, initialBroker, initialProperties, ...user} =
+    const {name, cnpj, state, initialBroker, initialProperties, ...user} =
       userData as TNewRealEstate;
     const {data} = await api.post('/realestate/register', {
       userData: {
-        city,
+        state,
         ...user,
         role: 'realEstate',
       },
       realEstateData: {
         name,
         cnpj,
-        city,
+        state,
         initialBroker: initialBroker === 'Sim',
         initialProperties,
       },

@@ -2,7 +2,7 @@ type TRealEstate = {
   id?: string;
   name: string;
   cnpj: string;
-  city?: string;
+  state?: string;
   initialProperties?: string;
   initialBrokers?: string;
   properties?: number;
@@ -13,7 +13,7 @@ type TRealEstate = {
 type TNewRealEstate = {
   name: string;
   cnpj: string;
-  city?: string;
+  state?: string;
   initialProperties?: string;
   initialBroker?: string;
   firstName: string;
@@ -22,5 +22,4 @@ type TNewRealEstate = {
   email: string;
   password: string;
   role: string;
-  city: string;
 };

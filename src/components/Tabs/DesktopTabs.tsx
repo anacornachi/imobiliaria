@@ -84,14 +84,14 @@ export default function DesktopTabs() {
             <Divider orientation="vertical" />
             <CustomSelect
               name="type"
-              label="Tipo de propriedade"
+              label="Tipo de propriedade *"
               placeholder="Selecione..."
               options={typeOfProperty}
             />
             <Divider orientation="vertical" />
             <CustomSelect
               name="price"
-              label="Faixa de preço"
+              label="Faixa de preço *"
               placeholder="Selecione..."
               options={maxValue}
             />

@@ -41,8 +41,8 @@ export default function UpdateUserForm({defaultValues}: Props) {
 
   return (
     <SimpleGrid
-      columns={2}
-      spacing="40px"
+      columns={{base: 1, md: 2}}
+      spacing={{base: '10px', md: '40px'}}
       as="form"
       onSubmit={methods.handleSubmit(onSubmit, onError)}
     >
@@ -78,8 +78,9 @@ export default function UpdateUserForm({defaultValues}: Props) {
           placeholder="Seu estado..."
           options={brazilianStates}
           fontSize="18px"
+          defaultValue={defaultValues?.state}
         />
-        <Button variant="primary" type="submit" mt="28px" h="45px">
+        <Button variant="primary" type="submit" mt="28px" h="45px" w="100%">
           Atualizar dados
         </Button>
       </FormProvider>
