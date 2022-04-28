@@ -19,3 +19,13 @@ export const getFilteredProperties = async (queries?: string) => {
   const {data} = await api.get('/properties/search' + queries);
   return data;
 };
+
+export const getPropertyById = async (id: string) => {
+  const {data} = await api.get(`/property/${id}`);
+  return data;
+};
+
+export const getPropertyByQueryId = async () => {
+  const id = window.location.pathname.split('/imovel/')[1];
+  return await getPropertyById(id);
+};

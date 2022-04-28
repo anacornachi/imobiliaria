@@ -5,7 +5,7 @@ type Props = {
   service: (param?: any) => Promise<any>;
   status?: 'authenticated' | 'unauthenticated' | 'loading';
   options?: {
-    trigger: 'onQueryChange';
+    trigger: 'onQueryChange' | 'onRouterIsReady';
   };
 };
 
@@ -38,5 +38,16 @@ export default function useFetch<T>({service, status, options}: Props) {
       });
     }
   }, [router.query, router.isReady]);
+
+  useEffect(() => {
+    if (router.isReady && options?.trigger === 'onRouterIsReady') {
+      setLoading(true);
+      service().then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+    }
+  }, [router.isReady]);
+
   return {data, isLoading};
 }
