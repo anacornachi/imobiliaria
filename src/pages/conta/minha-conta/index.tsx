@@ -1,4 +1,4 @@
-import {Heading, Flex, Button, Box} from '@chakra-ui/react';
+import {Heading, Flex, Button, Box, Spinner} from '@chakra-ui/react';
 import UpdatePasswordForm from '@components/Forms/UpdatePassword';
 import UpdateUserForm from '@components/Forms/UpdateUser';
 import {deleteUser, getUserById} from '@services/user';
@@ -39,12 +39,27 @@ export default function MyAccount() {
 
   return (
     <Container bg="main" borderRadius="40px">
-      <Flex w="100%" justify="space-between" p="60px">
-        <Flex direction="column" gap="40px" w="50%">
+      <Flex
+        w="100%"
+        justify="space-between"
+        p={{base: '20px', md: '60px'}}
+        direction={{base: 'column', md: 'row'}}
+        gap={{base: '30px', md: 0}}
+      >
+        <Flex direction="column" gap="40px" w={{base: '100%', md: '50%'}}>
           <Heading>Minha conta</Heading>
-          {defaultValues && <UpdateUserForm defaultValues={defaultValues} />}
+          {isLoading ? (
+            <Spinner alignSelf="center" />
+          ) : (
+            defaultValues && <UpdateUserForm defaultValues={defaultValues} />
+          )}
         </Flex>
-        <Flex w="20%" alignSelf="center" direction="column" gap="20px">
+        <Flex
+          w={{base: '100%', md: '35%', lg: '20%'}}
+          alignSelf="center"
+          direction="column"
+          gap="20px"
+        >
           <UpdatePasswordForm />
           <Button variant="delete" w="100%" onClick={() => handleDelete()}>
             Deletar minha conta

@@ -86,14 +86,14 @@ export default function MobileTabs() {
             <Divider />
             <CustomSelect
               name="type"
-              label="Tipo de propriedade"
+              label="Tipo de propriedade *"
               placeholder="Selecione..."
               options={typeOfProperty}
             />
             <Divider />
             <CustomSelect
               name="price"
-              label="Faixa de preço"
+              label="Faixa de preço *"
               placeholder="Selecione..."
               options={maxValue}
             />
