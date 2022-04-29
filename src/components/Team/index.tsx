@@ -8,13 +8,19 @@ import {teamData} from './teamData';
 export default function Team() {
   return (
     <Container>
-      <Flex direction="column">
-        {teamData.map((contributor) => (
-          <Flex key={contributor.name}>
+      <Flex direction="column" gap="60px" py={{base: '20px', md: '60px'}}>
+        {teamData.map((contributor, key) => (
+          <Flex
+            key={contributor.name}
+            justify={{
+              base: 'flex-start',
+              md: key % 2 == 0 ? 'flex-start' : 'flex-end',
+            }}
+          >
             <Box>
               <Image
                 src={contributor.image}
-                alt="ana"
+                alt={contributor.name}
                 width="200px"
                 height="200px"
               />

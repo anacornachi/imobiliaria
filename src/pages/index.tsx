@@ -76,20 +76,20 @@ function HomePage() {
               </ChakraLink>
             </Link>
           </Flex>
-
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <SimpleGrid columns={{base: 1, lg: 2}} spacing="40px">
-              {propertyData?.map((property, key) => (
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <SimpleGrid columns={{base: 1, lg: 2}} spacing="40px">
+            {propertyData
+              ?.slice(0, 6)
+              .map((property, key) => (
                 <PropertyList key={key} property={property} />
               )) ?? []}
-            </SimpleGrid>
-          )}
-        </Flex>
-        <FooterBanner />
-      </Container>
-    </>
+          </SimpleGrid>
+        )}
+      </Flex>
+      <FooterBanner />
+    </Container>
   );
 }
 
