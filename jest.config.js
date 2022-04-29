@@ -1,4 +1,5 @@
-import nextJest from 'next/jest';
+const nextJest = require('next/jest');
+const {compilerOptions} = require('./tsconfig');
 
 const createJestConfig = nextJest({
   dir: './',
@@ -10,7 +11,8 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     'components/(.*)': ['<rootDir>/src/components/$1'],
+    'services/(.*)': ['<rootDir>/src/services/$1'],
   },
 };
 
-export default createJestConfig(customJestConfig);
+module.exports = createJestConfig(customJestConfig);
