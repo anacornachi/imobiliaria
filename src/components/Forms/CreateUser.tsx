@@ -11,7 +11,7 @@ import CustomCheckbox from '@components/CustomCheckbox';
 import CustomInput from '@components/CustomInput';
 import CustomSelect from '@components/CustomSelect';
 import {signUp} from '@services/auth';
-import createUserSerializer from '@utils/createUserSerializer';
+import createUserSerializer from '../../utils/createUserSerializer';
 import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
