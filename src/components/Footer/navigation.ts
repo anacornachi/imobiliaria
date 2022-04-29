@@ -33,12 +33,8 @@ export const navigation = [
         label: 'Sobre Nós',
       },
       {
-        link: '/corretores',
-        label: 'Corretores',
-      },
-      {
-        link: '/imobiliarias',
-        label: 'Imobiliárias',
+        link: '/imoveis',
+        label: 'Imóveis',
       },
     ],
   },

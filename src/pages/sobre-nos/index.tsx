@@ -15,7 +15,7 @@ export default function AboutUs() {
             fontSize={{base: '20px', md: '20px', lg: '30px'}}
             top={{base: 5, md: 10}}
             w="100%"
-            m="60px"
+            py={{base: '30px', md: '60px'}}
           >
             Nosso Time
           </Heading>

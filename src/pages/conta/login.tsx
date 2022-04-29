@@ -11,7 +11,7 @@ import {FormProvider, useForm} from 'react-hook-form';
 import {signIn, useSession} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import CustomInput from '@components/CustomInput';
-import {loginResolver} from '@components/Forms/resolvers/loginResolver';
+import {loginResolver} from '@components/Forms/resolvers/User/loginResolver';
 
 export default function Login() {
   const toast = useToast();
