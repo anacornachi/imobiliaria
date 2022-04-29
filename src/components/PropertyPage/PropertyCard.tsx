@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Badge,
   Button,
   Flex,
   Heading,
@@ -11,23 +10,21 @@ import {
 import {FaShower} from 'react-icons/fa';
 import {IoBedOutline, IoLocationOutline} from 'react-icons/io5';
 import {MdDirectionsCar} from 'react-icons/md';
-import casa from '@public/assets/images/casa.png';
-import casinha from '@public/assets/images/casinha.png';
 import {useState} from 'react';
 
 type Props = {
-  data: TProperty | undefined;
+  data: TProperty;
 };
 
 export default function PropertyCard({data}: Props) {
-  const [highlightImage, setHighlightImage] = useState(data?.images[0]);
+  const [highlightImage, setHighlightImage] = useState(data.images[0]);
 
   return (
     <Flex
       w="100%"
       bg="main"
       borderRadius="40px"
-      p={{base: '20px', md: '35px', lg: '60px'}}
+      p={{base: '20px', md: '35px', lg: '50px'}}
       h={{base: 'auto', md: '500px'}}
       direction={{base: 'column', md: 'row'}}
       gap="30px"
@@ -37,23 +34,44 @@ export default function PropertyCard({data}: Props) {
         w={{base: '100%', md: '45%'}}
         h="100%"
         align="center"
+        gap="20px"
       >
-        <Flex h="80%">
-          <Image src={highlightImage} alt="" />
+        <Flex h={{base: '200px', md: '75%'}} justify="center">
+          <Image
+            w={{base: '100%', md: '90%'}}
+            src={highlightImage}
+            alt=""
+            borderRadius={{base: '20px', md: '40px'}}
+            objectFit="cover"
+            draggable={false}
+          />
         </Flex>
-        <Flex gap="30px" mt="25px" h="20%">
-          {data?.images.map((image) => {
+        <Flex
+          h={{base: '80px', md: '25%'}}
+          gap="30px"
+          w="100%"
+          justify="center"
+          maxW="100%"
+          overflow="scroll"
+        >
+          {data.images.map((image) => (
             <Image
-              src={image}
+              key={image}
               alt=""
+              w={{base: '100%', md: '25%'}}
+              src={image}
+              borderRadius="10px"
+              cursor="pointer"
+              draggable={false}
               onClick={() => setHighlightImage(image)}
-            />;
-          })}
+              border={image == highlightImage ? '3px solid #1eadfe' : 'none'}
+            />
+          ))}
         </Flex>
       </Flex>
       <Flex
         direction="column"
-        gap={{base: '20px', md: '60px'}}
+        gap={{base: '20px', md: '30px'}}
         w={{base: '100%', md: '55%'}}
         justify={{md: 'space-between'}}
       >
@@ -68,7 +86,7 @@ export default function PropertyCard({data}: Props) {
             fontWeight="semibold"
             h="50%"
           >
-            {data?.title}
+            {data.title}
           </Heading>
           <SimpleGrid
             columns={{base: 2, md: 3, lg: 4}}
@@ -78,25 +96,25 @@ export default function PropertyCard({data}: Props) {
             <Flex align="center">
               <IoBedOutline size="30px" />
               <Heading as="h3" fontSize={{base: '13px', md: '20px'}} ml="4px">
-                {data?.amountBedrooms}
+                {data.amountBedrooms}
               </Heading>
             </Flex>
             <Flex align="center">
               <FaShower size="30px" />
               <Heading as="h3" fontSize={{base: '13px', md: '20px'}} ml="4px">
-                {data?.amountBathrooms}
+                {data.amountBathrooms}
               </Heading>
             </Flex>
             <Flex align="center">
               <MdDirectionsCar size="30px" />
               <Heading as="h3" fontSize={{base: '13px', md: '20px'}} ml="4px">
-                {data?.amountGarage}
+                {data.amountGarage}
               </Heading>
             </Flex>
             <Flex align="center">
               <IoLocationOutline size="30px" />
               <Heading as="h3" fontSize={{base: '13px', md: '20px'}} ml="4px">
-                {data?.city},{data?.state}
+                {data.city}, {data.state}
               </Heading>
             </Flex>
           </SimpleGrid>
@@ -119,7 +137,7 @@ export default function PropertyCard({data}: Props) {
               color="description"
               fontWeight="semibold"
             >
-              {data?.realEstate?.name ?? 'Imobiliária'}
+              {data.realEstate?.name ?? 'Imobiliária'}
             </Text>
           </Flex>
           <Flex direction="column" gap="15px" justify="space-between">

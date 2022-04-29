@@ -19,8 +19,8 @@ export default function PropertyId() {
 
   return (
     <Container>
-      <PropertyCard data={propertyData} />
-      <PropertyDescription data={propertyData} />
+      {propertyData && <PropertyCard data={propertyData} />}
+      {propertyData && <PropertyDescription data={propertyData} />}
     </Container>
   );
 }
