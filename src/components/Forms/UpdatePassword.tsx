@@ -55,6 +55,7 @@ export default function UpdatePasswordForm() {
           placeholder="Senha atual..."
           title="Senha atual *"
           type="password"
+          id="oldPassword"
         />
         <CustomInput
           name="newPassword"
@@ -62,6 +63,7 @@ export default function UpdatePasswordForm() {
           placeholder="Nova senha..."
           title="Nova senha *"
           type="password"
+          id="newPassword"
         />
         <Button variant="primary" type="submit" w="100%" h="45px">
           Atualizar

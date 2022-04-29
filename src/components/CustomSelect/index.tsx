@@ -8,6 +8,7 @@ type Props = {
   name: string;
   label: string;
   placeholder: string;
+  defaultValue?: string;
   options: TOption[];
 } & TextProps;
 type TOption = {
@@ -20,6 +21,7 @@ export default function CustomSelect({
   label,
   placeholder,
   options,
+  defaultValue,
   ...props
 }: Props) {
   const {formState, setValue} = useFormContext();
@@ -37,7 +39,11 @@ export default function CustomSelect({
         <Select
           styles={customStyles}
           placeholder={placeholder}
-          defaultValue={selectedOption}
+          defaultValue={
+            defaultValue
+              ? options.filter((option) => option.value === defaultValue)
+              : selectedOption
+          }
           options={options}
           isSearchable={true}
           onChange={(newValue) => {

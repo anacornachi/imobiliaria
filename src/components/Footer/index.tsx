@@ -25,9 +25,9 @@ export default function Footer() {
             gap="30px"
             order={{base: 2, md: -1}}
           >
-            <Box position="relative" width="182px" height="52px">
-              <Image src={logo} alt="logo" layout="fixed" />
-            </Box>
+            <ChakraLink href="/" _focus={{boxShadow: 'none'}}>
+              <Image src={logo} alt="logo" draggable={false} />
+            </ChakraLink>
             <Text
               color="secondary"
               fontSize="sm"
