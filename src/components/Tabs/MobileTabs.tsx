@@ -2,7 +2,6 @@ import {
   Button,
   Divider,
   Flex,
-  Input,
   Tab,
   TabList,
   TabPanels,
@@ -12,11 +11,12 @@ import {FiSearch} from 'react-icons/fi';
 import {useState} from 'react';
 import CustomSelect from '@components/CustomSelect';
 import {typeOfProperty} from 'src/constants/typeOfProperty';
-import {maxValue} from 'src/constants/maxValue';
+import {maxRentingValue} from 'src/constants/maxRentingValue';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
 import {searchResolver} from '@components/Forms/resolvers/searchResolver';
 import {brazilianStates} from 'src/constants/brazilianStates';
+import {maxSellingValue} from 'src/constants/maxSellingValue';
 
 export default function MobileTabs() {
   const router = useRouter();
@@ -95,7 +95,7 @@ export default function MobileTabs() {
               name="price"
               label="Faixa de preço"
               placeholder="Selecione..."
-              options={maxValue}
+              options={isRenting ? maxRentingValue : maxSellingValue}
             />
             <Button
               h="40px"

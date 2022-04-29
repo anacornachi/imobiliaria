@@ -1,7 +1,7 @@
 import {Button, Heading, SimpleGrid, useToast} from '@chakra-ui/react';
 import {FormProvider, useForm} from 'react-hook-form';
 import CustomInput from '@components/CustomInput';
-import {updatePasswordResolver} from './resolvers/updatePasswordResolver';
+import {updatePasswordResolver} from './resolvers/User/updatePasswordResolver';
 import {updatePassword} from '@services/user';
 
 export default function UpdatePasswordForm() {

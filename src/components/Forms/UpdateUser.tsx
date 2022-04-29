@@ -4,7 +4,7 @@ import CustomSelect from '@components/CustomSelect';
 import {updateUser} from '@services/user';
 import {FormProvider, useForm} from 'react-hook-form';
 import {brazilianStates} from 'src/constants/brazilianStates';
-import {updateUserResolver} from './resolvers/updateUserResolver';
+import {updateUserResolver} from './resolvers/User/updateUserResolver';
 
 type Props = {
   defaultValues?: TUser;
@@ -78,6 +78,7 @@ export default function UpdateUserForm({defaultValues}: Props) {
           placeholder="Seu estado..."
           options={brazilianStates}
           fontSize="18px"
+          defaultValue={defaultValues?.state}
         />
         <Button variant="primary" type="submit" mt="28px" h="45px">
           Atualizar dados

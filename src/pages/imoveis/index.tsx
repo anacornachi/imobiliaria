@@ -1,7 +1,7 @@
 import {Button, Flex, Heading, Input, Spinner, Text} from '@chakra-ui/react';
 import Container from '@components/layout/Container';
 import PropertyList from '@components/PropertyList';
-import SearchFilter from '@components/SearchFilter';
+import SearchFilter from '@components/SearchFilter/SearchFilterDesktop';
 import SearchFilterMobile from '@components/SearchFilter/SearchFilterMobile';
 import {getFilteredProperties} from '@services/properties';
 import filterData from '@utils/filterData';

@@ -63,9 +63,11 @@ function HomePage() {
           <Spinner />
         ) : (
           <SimpleGrid columns={{base: 1, lg: 2}} spacing="40px">
-            {propertyData?.map((property, key) => (
-              <PropertyList key={key} property={property} />
-            )) ?? []}
+            {propertyData
+              ?.slice(0, 6)
+              .map((property, key) => (
+                <PropertyList key={key} property={property} />
+              )) ?? []}
           </SimpleGrid>
         )}
       </Flex>

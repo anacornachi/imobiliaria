@@ -8,6 +8,7 @@ type TUser = {
   role: string;
   isActive: boolean;
   city: string;
+  state: string;
 };
 
 type TUserPassword = {

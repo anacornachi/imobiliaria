@@ -11,7 +11,7 @@ export const teamData = [
     focusIn: 'Front End',
     technologies:
       'React.js | Next.js | TypeScript | Node.js | Jest | Testing Library',
-    linkedin: 'https://github.com/anacornachi',
+    linkedin: 'https://www.linkedin.com/in/anacornachi/',
     github: 'https://github.com/anacornachi',
   },
   {

@@ -20,4 +20,5 @@ type TProperty = {
   realEstate: {
     name: string;
   };
+  images: string[];
 };

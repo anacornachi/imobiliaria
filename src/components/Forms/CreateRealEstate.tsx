@@ -17,7 +17,7 @@ import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
 import {brazilianStates} from 'src/constants/brazilianStates';
 import {yesOrNoOption} from 'src/constants/yesOrNo';
-import {createRealEstateResolver} from './resolvers/createRealEstateResolver';
+import {createRealEstateResolver} from './resolvers/RealEstate/createRealEstateResolver';
 
 export default function CreateRealEstateForm() {
   const router = useRouter();

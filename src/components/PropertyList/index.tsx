@@ -39,7 +39,7 @@ export default function PropertyList({property, ...props}: Props) {
           h="191px"
           objectFit="cover"
           borderRadius="20px"
-          src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          src={property.images[0]}
         />
         <Flex
           direction="column"
