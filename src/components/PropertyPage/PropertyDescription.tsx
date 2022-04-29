@@ -1,7 +1,6 @@
 import {Button, Flex, Heading, SimpleGrid, Text} from '@chakra-ui/react';
 import Image from 'next/image';
 import logo from '@public/assets/images/logo.png';
-import {getDisplayName} from 'next/dist/shared/lib/utils';
 import convertToBRL from '@utils/convertToBRL';
 
 type Props = {
