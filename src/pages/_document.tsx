@@ -13,6 +13,11 @@ class MyDocument extends Document {
           href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;300;400;500;700&display=swap"
           rel="stylesheet"
         />
+        <meta
+          name="description"
+          content="Projeto desenvolvido para avaliação do módulo 5 - Resilia Educação"
+        />
+        <title>Imobiliária - Resilia</title>
 
         <body>
           <ColorModeScript />

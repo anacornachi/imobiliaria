@@ -1,4 +1,4 @@
-import {Heading, Flex, Button, Box, Spinner} from '@chakra-ui/react';
+import {Heading, Flex, Button, Spinner} from '@chakra-ui/react';
 import UpdatePasswordForm from '@components/Forms/UpdatePassword';
 import UpdateUserForm from '@components/Forms/UpdateUser';
 import {deleteUser, getUserById} from '@services/user';

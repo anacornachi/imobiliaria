@@ -11,7 +11,6 @@ import {
   DrawerOverlay,
   Flex,
   Heading,
-  Input,
   Text,
   useDisclosure,
 } from '@chakra-ui/react';

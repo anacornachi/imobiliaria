@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react';
 import useFetch from 'src/hooks/useFetch';
 
 export default function PropertyId() {
-  const {data, isLoading} = useFetch<TProperty>({
+  const {data} = useFetch<TProperty>({
     service: () => getPropertyByQueryId(),
     options: {trigger: 'onRouterIsReady'},
   });
