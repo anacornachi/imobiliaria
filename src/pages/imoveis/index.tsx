@@ -123,7 +123,10 @@ export default function Imoveis() {
           <Flex py="10px" alignItems="center" px="20px" alignSelf="end">
             {currentPage > 0 && (
               <Button
-                onClick={setPreviousPage}
+                onClick={() => {
+                  setPreviousPage();
+                  scrollTo({top: 0, behavior: 'smooth'});
+                }}
                 disabled={!previousEnabled}
                 bg="none"
                 _focus={{boxShadow: 'none'}}
@@ -137,7 +140,10 @@ export default function Imoveis() {
               {currentPage + 1} de {totalPages}
             </Text>
             <Button
-              onClick={setNextPage}
+              onClick={() => {
+                setNextPage();
+                scrollTo({top: 0, behavior: 'smooth'});
+              }}
               disabled={!nextEnabled}
               bg="none"
               _hover={{bg: 'none'}}

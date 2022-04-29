@@ -33,8 +33,7 @@ export default function MyAccount() {
 
   const handleDelete = async () => {
     await deleteUser();
-    await signOut();
-    router.push('/');
+    await signOut({callbackUrl: '/'});
   };
 
   return (
