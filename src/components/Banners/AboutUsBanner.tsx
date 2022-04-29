@@ -1,4 +1,4 @@
-import {Box, Button, Flex, Heading, Text} from '@chakra-ui/react';
+import {Box, Flex, Heading, Text} from '@chakra-ui/react';
 import Image from 'next/image';
 import bannerUs from '@public/assets/images/banner-us.png';
 
@@ -26,12 +26,7 @@ export default function AboutUsBanner() {
           conecte-se conosco.
         </Text>
       </Flex>
-      <Box
-        position="relative"
-        d={{base: 'none', lg: 'flex'}}
-        mt="40px"
-        mb="40px"
-      >
+      <Box d={{base: 'none', lg: 'flex'}}>
         <Image src={bannerUs} alt="" layout="intrinsic" />
       </Box>
     </Flex>

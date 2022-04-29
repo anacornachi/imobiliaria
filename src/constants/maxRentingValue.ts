@@ -1,4 +1,4 @@
-export const maxValue = [
+export const maxRentingValue = [
   {
     value: '0-1000',
     label: 'R$ 0,00 - 1.000',
@@ -18,9 +18,5 @@ export const maxValue = [
   {
     value: '4000-5000',
     label: 'R$ 4.000 - 5.000',
-  },
-  {
-    value: '5000+',
-    label: 'R$ 5.000 +',
   },
 ];

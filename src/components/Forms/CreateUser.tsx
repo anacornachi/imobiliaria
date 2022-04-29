@@ -16,7 +16,7 @@ import {signIn} from 'next-auth/react';
 import {useRouter} from 'next/router';
 import {FormProvider, useForm} from 'react-hook-form';
 import {brazilianStates} from 'src/constants/brazilianStates';
-import {createUserResolver} from './resolvers/createUserResolver';
+import {createUserResolver} from './resolvers/User/createUserResolver';
 
 export default function CreateUserForm() {
   const router = useRouter();

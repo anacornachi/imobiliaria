@@ -4,7 +4,7 @@ import CustomSelect from '@components/CustomSelect';
 import {updateUser} from '@services/user';
 import {FormProvider, useForm} from 'react-hook-form';
 import {brazilianStates} from 'src/constants/brazilianStates';
-import {updateUserResolver} from './resolvers/updateUserResolver';
+import {updateUserResolver} from './resolvers/User/updateUserResolver';
 
 type Props = {
   defaultValues?: TUser;
